@@ -23,13 +23,14 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainFragViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         setupLayout()
-        info("onViewCreated: ")
     }
 
     private fun setupLayout() {
         // set up view pager
         // nested fragment, using getChildFragmentManager() to obtain fragment manager
+        binding.viewPager.offscreenPageLimit = 3
         binding.viewPager.adapter = MainViewPagerAdapter(childFragmentManager)
         binding.viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             override fun onPageSelected(position: Int) {

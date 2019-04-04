@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/mainFragment">
 
@@ -23,9 +24,11 @@
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.jiujiu.helper.ui.settings.SettingFragment" />
+
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.jiujiu.helper.ui.products.details.ProductDetailFragment"
@@ -35,7 +38,8 @@
             app:argType="long" />
         <argument
             android:name="title"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue="add product"/>
     </fragment>
 
 </navigation>

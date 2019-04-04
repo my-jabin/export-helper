@@ -9,6 +9,7 @@ import androidx.work.WorkManager
 import com.jiujiu.helper.App
 import com.jiujiu.helper.data.local.AppDatabase
 import com.jiujiu.helper.data.local.dao.ProductDao
+import com.jiujiu.helper.data.local.dao.ProductTypeDao
 import com.jiujiu.helper.di.scope.DatabaseInfo
 import com.jiujiu.helper.di.scope.PreferenceInfo
 import com.jiujiu.helper.util.AppConstant
@@ -59,6 +60,12 @@ class AppModule {
     @Singleton
     fun provideProductDao(database: AppDatabase): ProductDao {
         return database.productDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductTypeDao(database: AppDatabase) : ProductTypeDao{
+        return database.productTypeDao()
     }
 
 

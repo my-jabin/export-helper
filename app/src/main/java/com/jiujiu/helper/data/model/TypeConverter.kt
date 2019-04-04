@@ -9,4 +9,10 @@ class Converters {
 
     @TypeConverter
     fun fromLongToCalender(time: Long) : Calendar = Calendar.getInstance().apply { timeInMillis = time }
+
+    @TypeConverter
+    fun fromCurrencyToCode(currency: Currency): String = currency.currencyCode
+
+    @TypeConverter
+    fun fromCodeToCurrenty(code: String) : Currency = Currency.getInstance(code)
 }

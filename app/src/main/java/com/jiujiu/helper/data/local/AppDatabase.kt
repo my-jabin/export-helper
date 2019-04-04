@@ -5,11 +5,14 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 import com.jiujiu.helper.data.local.dao.ProductDao
+import com.jiujiu.helper.data.local.dao.ProductTypeDao
 import com.jiujiu.helper.data.model.Converters
 import com.jiujiu.helper.data.model.Product
+import com.jiujiu.helper.data.model.ProductType
 
-@Database(entities = [Product::class], version = 1, exportSchema = false)
+@Database(entities = arrayOf(Product::class, ProductType::class), version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun productDao(): ProductDao
+    abstract fun productTypeDao(): ProductTypeDao
 }

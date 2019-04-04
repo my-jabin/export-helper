@@ -23,12 +23,6 @@ class ProductDetailFragment : BaseFragment<ProductDetailBinding, ProductDetailVi
 
     private val args: ProductDetailFragmentArgs by navArgs()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState).apply {
-            setHasOptionsMenu(true)
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.loadProductById(args.productId)
@@ -40,14 +34,13 @@ class ProductDetailFragment : BaseFragment<ProductDetailBinding, ProductDetailVi
             it?.apply {
                 info("product detail is refreshing")
                 binding.product = it
-//                binding.executePendingBindings()
             }
         })
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         // dynamically change option menu
-        menu.findItem(R.id.menu_settings).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER)
+        menu.findItem(R.id.menu_add).isVisible = false
         super.onPrepareOptionsMenu(menu)
     }
 

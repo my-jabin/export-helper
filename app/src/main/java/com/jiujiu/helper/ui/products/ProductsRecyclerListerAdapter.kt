@@ -24,10 +24,10 @@ class ProductsRecyclerListerAdapter : BaseRecyclerListAdapter<Product, ProductIt
     }
 
     private fun onProductItemClick(v: View, @NonNull p: Product) {
-        val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(p.id!!, p.name)
+        val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(p.id!!)
+        action.title = p.name
         v.findNavController().navigate(action)
     }
-
 }
 
 val diff: DiffUtil.ItemCallback<Product> = object : DiffUtil.ItemCallback<Product>() {
@@ -38,6 +38,7 @@ val diff: DiffUtil.ItemCallback<Product> = object : DiffUtil.ItemCallback<Produc
     override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem.name == newItem.name &&
                 oldItem.brand == newItem.brand &&
-                oldItem.price == newItem.price
+                oldItem.model == newItem.model &&
+                oldItem.salePrice == newItem.salePrice
     }
 }

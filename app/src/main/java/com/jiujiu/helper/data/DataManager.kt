@@ -1,7 +1,9 @@
 package com.jiujiu.helper.data
 
 import androidx.lifecycle.LiveData
+import com.jiujiu.helper.data.local.dao.ProductTypeDao
 import com.jiujiu.helper.data.model.Product
+import com.jiujiu.helper.data.model.ProductType
 import com.jiujiu.helper.data.repository.ProductRepository
 import com.jiujiu.helper.util.AppConstant
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +14,8 @@ import javax.inject.Singleton
 @Singleton
 class DataManager @Inject constructor(
         private val mPreference: AppPreference,
-        private val mProductRepository: ProductRepository
+        private val mProductRepository: ProductRepository,
+        private val mProductTypeDao: ProductTypeDao
 ) {
 
     var currentUserName: String?
@@ -29,13 +32,27 @@ class DataManager @Inject constructor(
     }
 
     suspend fun prePopulateData() {
-        withContext(Dispatchers.IO){
+        withContext(Dispatchers.IO) {
+
+            val types = arrayListOf<ProductType>().apply {
+                for(i in 1..9){
+                    add(ProductType("ProductType $i"))
+                }
+            }
+            mProductTypeDao.insert(*types.toTypedArray())
+
             val products = arrayListOf<Product>().apply {
                 for (i in 1..5) {
-                    add(Product(null, "product Name $i", "Brand $i", i * 10.0))
+                    add(Product("product name $i", "Brand $i").apply {
+                        salePrice = i * 10.0
+                        model = "Model $i"
+                        typeId = i
+                    })
                 }
             }
             mProductRepository.insert(*products.toTypedArray())
+
+
         }
     }
 
