@@ -10,6 +10,9 @@
         <item name="android:textColorHint">@color/hintTextColor</item>
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="productListKeyline">@dimen/keyLine</item>
+        <!--<item name="popupMenuStyle">@style/Widget.MaterialComponents.PopupMenu</item>-->
+        <!--<item name="android:contextPopupMenuStyle">@style/Widget.MaterialComponents.PopupMenu.ContextMenu</item>-->
+        <!--<item name="actionOverflowMenuStyle">@style/Widget.MaterialComponents.PopupMenu.Overflow</item>-->
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -26,33 +29,118 @@
     </style>
 
     <style name="TextAppearance.helper.title" parent="@style/TextAppearance.MaterialComponents.Headline6">
-        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="fontFamily">@font/josefin_sans</item>
     </style>
 
-    <style name="TextAppearance.helper.subTitle" parent="@style/TextAppearance.MaterialComponents.Subtitle2">
-        <item name="android:fontFamily">@font/josefin_sans</item>
+    <style name="TextAppearance.helper.button.text" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="fontFamily">@font/josefin_sans</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="TextAppearance.helper.subTitle" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/josefin_sans</item>
+    </style>
+
+    <style name="TextAppearance.helper.body1" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/josefin_sans</item>
     </style>
 
     <style name="TextAppearance.helper.body" parent="@style/TextAppearance.MaterialComponents.Body2">
-        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="fontFamily">@font/josefin_sans</item>
     </style>
 
     <style name="TextAppearance.helper.caption" parent="@style/TextAppearance.MaterialComponents.Caption">
-        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="fontFamily">@font/josefin_sans</item>
     </style>
 
 
+    <style name="TextAppearance.helper.ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"></style>
 
-    <style name="TextAppearance.helper.ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+    <style name="TextAppearance.helper.title.product" parent="TextAppearance.helper.title">
+        <item name="android:background">@color/white</item>
+        <item name="android:ems">10</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.helper.productTitle" parent="TextAppearance.helper.title">
+    <style name="TextAppearance.helper.subTitle.product" parent="TextAppearance.helper.subTitle">
     </style>
 
-    <style name="TextAppearance.helper.productSubTitle" parent="TextAppearance.helper.subTitle">
+    <style name="TextAppearance.helper.body.product" parent="TextAppearance.helper.body">
+        <item name="android:background">@color/background_main</item>
+        <item name="android:paddingTop">@dimen/padding_small</item>
+        <item name="android:paddingBottom">@dimen/padding_small</item>
+        <item name="android:paddingStart">@dimen/padding_normal</item>
+        <item name="android:paddingEnd">@dimen/padding_normal</item>
     </style>
 
-    <style name="TextAppearance.helper.productBody" parent="TextAppearance.helper.body">
+    <!--<style name="TextAppearance.helper.body.product.keyValue" parent="TextAppearance.helper.body.product">-->
+    <!--<item name="android:paddingStart">@dimen/padding_normal</item>-->
+    <!--<item name="android:paddingEnd">@dimen/padding_normal</item>-->
+    <!--</style>-->
+
+    <style name="TextAppearance.helper.caption.product" parent="TextAppearance.helper.caption">
+        <item name="android:background">@color/background_main</item>
+        <item name="android:textSize">16sp</item>
     </style>
+
+
+    <style name="TextAppearance.helper.edit" parent="TextAppearance.helper.body">
+        <item name="android:background">@color/white</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="TextAppearance.helper.edit.unable" parent="TextAppearance.helper.edit">
+        <item name="android:clickable">false</item>
+        <item name="android:inputType">none</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="TextAppearance.helper.edit.title" parent="TextAppearance.helper.title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="TextAppearance.helper.textInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="android:layout_marginLeft">@dimen/margin_small</item>
+        <item name="android:layout_marginRight">@dimen/margin_small</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+
+    <style name="TextAppearance.helper.textInput.outline" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layout_marginLeft">@dimen/margin_small</item>
+        <item name="android:layout_marginRight">@dimen/margin_small</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
+
+    <style name="TextAppearance.helper.textInput.outline.login" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_normal</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_normal</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_normal</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_normal</item>
+    </style>
+
+    <style name="TextAppearance.helper.textInput.dropdown" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu">
+        <item name="android:paddingLeft">@dimen/padding_small</item>
+        <item name="android:paddingRight">@dimen/padding_small</item>
+        <item name="android:paddingTop">2dp</item>
+    </style>
+
+    <style name="TextAppearance.helper.hint" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/hintTextColor</item>
+    </style>
+
+
+    <style name="TextAppearance.helper.body.money" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/red_money</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
 
 </resources>

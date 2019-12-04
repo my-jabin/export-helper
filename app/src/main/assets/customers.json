@@ -1,0 +1,70 @@
+[
+  {
+    "IDNumber": "35042919382948203",
+    "address": {
+      "city": "三明市",
+      "district": "沙sha县",
+      "postCode": 365500,
+      "province": "福建省fujiansheng",
+      "state": "中国",
+      "street": "凤岗镇莲花新村的北路265-123号"
+    },
+    "email": "default@email.com",
+    "name": "Yanbin Hu",
+    "phoneNumber": "13203939292"
+  },
+  {
+    "IDNumber": "350429198803238402",
+    "address": {
+      "district": "湖里区",
+      "city": "厦门市",
+      "province": "福建省",
+      "state": "中国",
+      "street": "圆山南路202号"
+    },
+    "email": "default@email.com",
+    "name": "Hu Yanbin",
+    "phoneNumber": "13203939292"
+  },
+  {
+    "address": {
+      "district": "湖里区",
+      "city": "厦门市",
+      "province": "福建省",
+      "state": "中国",
+      "street": "圆山南路202号"
+    },
+    "name": "Guo Yanxue",
+    "phoneNumber": "18205030403"
+  },
+  {
+    "address": {
+      "district": "哪个区？",
+      "city": "深圳市",
+      "province": "广东省",
+      "state": "中国",
+      "street": "不认识的路202号"
+    },
+    "email": "default@email.com",
+    "name": "Yanxue Guo"
+  },
+  {
+    "address": {
+      "district": "湖里区",
+      "city": "北京市",
+      "state": "中国",
+      "street": "山南路12号"
+    },
+    "name": "胡延彬"
+  },
+  {
+    "address": {
+      "district": "思明区",
+      "city": "厦门市",
+      "province": "福建省",
+      "state": "中国",
+      "street": "圆山南路202号"
+    },
+    "name": "郭燕雪"
+  }
+]

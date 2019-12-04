@@ -1,7 +1,9 @@
 package com.jiujiu.helper.ui.products.details
 
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.jiujiu.helper.BR
@@ -30,12 +32,19 @@ class ProductDetailFragment : BaseFragment<ProductDetailBinding, ProductDetailVi
     }
 
     private fun setupViewModel() {
-        viewModel.productLiveData.observe(this, Observer {
+        viewModel.productVOLiveData.observe(this, Observer {
             it?.apply {
                 info("product detail is refreshing")
                 binding.product = it
             }
         })
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        // todo: edit product in AddProductFragment?
+        inflater.inflate(R.menu.product_detail_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {

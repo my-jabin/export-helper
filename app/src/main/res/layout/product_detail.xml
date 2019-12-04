@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,181 +12,203 @@
 
         <variable
             name="product"
-            type="com.jiujiu.helper.data.model.Product" />
+            type="com.jiujiu.helper.data.model.ProductVO" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_normal">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/product_image_height"
-            android:adjustViewBounds="false"
-            android:scaleType="centerInside"
-            android:src="@drawable/product_placeholder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/product_placeholder" />
-
-        <EditText
-            android:id="@+id/ed_product_brand"
-            style="@style/TextAppearance.helper.caption"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:text="@{product.brand}"
-            android:inputType="text"
-            android:hint="@string/hint_product_brand"
-            android:paddingStart="@dimen/padding_large"
-            android:paddingTop="@dimen/padding_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-        <EditText
-            android:id="@+id/ed_product_name"
-            style="@style/TextAppearance.helper.productTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:ems="10"
-            android:fontFamily="@font/josefin_sans"
-            android:hint="@string/hint_product_name"
-            android:inputType="text"
-            android:paddingStart="@dimen/padding_normal"
-            android:singleLine="true"
-            android:text="@{product.name}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_product_brand" />
+        android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/tv_product_purchase_price_title"
-            style="@style/TextAppearance.helper.productBody"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/padding_small"
-            android:paddingStart="@dimen/padding_normal"
-            android:background="@android:color/white"
-            android:text="@string/purchase_price"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_product_name" />
-
-        <EditText
-            android:id="@+id/ed_product_price"
-            style="@style/TextAppearance.helper.productBody"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="8dp"
-            android:background="@android:color/white"
-            android:fontFamily="casual"
-            android:inputType="numberDecimal"
-            android:paddingStart="@dimen/padding_normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ed_product_name"
-            tools:text="3.3" />
+            android:layout_height="match_parent"
+            android:background="@color/background_main">
 
-        <!--<LinearLayout-->
-            <!--android:id="@+id/ll_product_brand"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:background="@android:color/white"-->
-            <!--android:paddingStart="16dp"-->
-            <!--android:paddingTop="4dp"-->
-            <!--android:paddingBottom="4dp"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/imageView2">-->
+            <ImageView
+                android:id="@+id/image_product_detail"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/product_image_height"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/product_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/product_placeholder" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_display"
+                style="@style/TextAppearance.helper.title.product"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_product_name"
+                android:paddingStart="@dimen/padding_normal"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_normal"
+                android:text="@{product.displayName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_product_detail" />
+
+            <TextView
+                android:id="@+id/tv_product_purchase_price_title"
+                style="@style/TextAppearance.helper.body.money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_buy_black_20"
+                android:drawablePadding="@dimen/padding_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@{ product.displayPurchasePrice}"
+                app:layout_constraintStart_toStartOf="@+id/guideline_25"
+                app:layout_constraintTop_toBottomOf="@+id/tv_product_detail_display"
+                tools:text="$15.45" />
+
+            <TextView
+                android:id="@+id/tv_product_sale_price_title"
+                style="@style/TextAppearance.helper.body.money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_sale_black_24"
+                android:drawablePadding="@dimen/padding_small"
+                android:text="@{ product.displaySalePrice}"
+                app:layout_constraintStart_toStartOf="@+id/guideline_75"
+                app:layout_constraintTop_toTopOf="@+id/tv_product_purchase_price_title"
+                tools:text="￥235" />
+
+            <TextView
+                android:id="@+id/tv_product_netweight"
+                style="@style/TextAppearance.helper.caption.product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:drawableLeft="@drawable/ic_weight_black"
+                android:drawablePadding="@dimen/space_micro"
+                android:paddingBottom="@dimen/space_normal"
+                android:text="@{product.netWeight}"
+                app:layout_constraintBottom_toTopOf="@+id/divider_main"
+                app:layout_constraintStart_toEndOf="@+id/guideline_25"
+                app:layout_constraintTop_toBottomOf="@+id/tv_product_purchase_price_title"
+                tools:text="0.8" />
+
+            <TextView
+                android:id="@+id/tv_product_madein"
+                style="@style/TextAppearance.helper.caption.product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_made_in_black"
+                android:drawablePadding="@dimen/space_micro"
+                android:text="@{product.madeIn}"
+                app:layout_constraintStart_toEndOf="@+id/guideline_75"
+                app:layout_constraintTop_toTopOf="@+id/tv_product_netweight"
+                tools:text="China" />
+
+            <View
+                android:id="@+id/divider_main"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_normal"
+                android:background="@color/background_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_product_netweight" />
+
+            <com.jiujiu.helper.ui.widget.KeyValueTextView
+                android:id="@+id/kvtv_product_detail_brand_zh"
+                style="@style/TextAppearance.helper.body.product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                app:keyText="@string/product_brand_zh"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider_main"
+                app:valueText="@{product.brandZh}"
+                tools:layout_editor_absoluteY="8dp" />
+
+            <com.jiujiu.helper.ui.widget.KeyValueTextView
+                android:id="@+id/kvtv_product_detail_name_zh"
+                style="@style/TextAppearance.helper.body.product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:keyText="@string/product_name_zh"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kvtv_product_detail_brand_zh"
+                app:valueText="@{product.nameZh}" />
+
+            <com.jiujiu.helper.ui.widget.KeyValueTextView
+                android:id="@+id/kvtv_product_detail_model_zh"
+                style="@style/TextAppearance.helper.body.product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:keyText="@string/product_model_zh"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kvtv_product_detail_name_zh"
+                app:valueText="@{ product.modelZh }" />
+
+            <com.jiujiu.helper.ui.widget.KeyValueTextView
+                android:id="@+id/kvtv_product_detail_type"
+                style="@style/TextAppearance.helper.body.product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:keyText="@string/text_type"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kvtv_product_detail_model_zh"
+                app:valueText="@{ product.type }" />
+
+            <com.jiujiu.helper.ui.widget.KeyValueTextView
+                android:id="@+id/kvtv_product_detail_purchase_approach"
+                style="@style/TextAppearance.helper.body.product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:keyText="@string/text_approach"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kvtv_product_detail_type"
+                app:valueText="@{ product.approach }" />
+
+            <TextView
+                android:id="@+id/tv_product_description_title"
+                style="@style/TextAppearance.helper.caption.product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@{@dimen/padding_normal + @dimen/padding_small}"
+                android:text="@string/text_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/kvtv_product_detail_purchase_approach" />
+
+            <TextView
+                android:id="@+id/tv_product_description"
+                style="@style/TextAppearance.helper.caption.product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@{@dimen/padding_normal + @dimen/padding_small}"
+                android:paddingTop="@dimen/padding_normal"
+                android:text="@{product.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_product_description_title"
+                tools:text="This is a description of the product! This is a description of the product! This is a description of the product! This is a description of the product! This is a description of the product! This is a description of the product!" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6" />
 
 
-        <!--</LinearLayout>-->
-        <!---->
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/ll_product_name"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:background="@android:color/white"-->
-            <!--android:paddingStart="16dp"-->
-            <!--android:paddingTop="2dp"-->
-            <!--android:paddingBottom="2dp"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/divider1">-->
-            <!--<TextView-->
-                <!--android:id="@+id/tv_product_name"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textSize="@dimen/text_size_normal"-->
-                <!--android:text="@string/text_product_name" />-->
-
-            <!--<EditText-->
-                <!--android:id="@+id/ed_product_name"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="16dp"-->
-                <!--android:background="@null"-->
-                <!--android:ems="10"-->
-                <!--android:hint="@string/hint_product_name"-->
-                <!--android:inputType="text"-->
-                <!--android:singleLine="true"-->
-                <!--android:textSize="@dimen/text_size_normal"-->
-                <!--android:text="@{product.name}" />-->
-        <!--</LinearLayout>-->
-
-
-
-        <!--<View-->
-            <!--android:id="@+id/divider2"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="1dp"-->
-            <!--android:layout_marginTop="4dp"-->
-            <!--android:layout_marginBottom="4dp"-->
-            <!--android:background="@color/divider"-->
-            <!--app:layout_constraintBottom_toTopOf="@+id/tv_product_model"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/tv_product_name"-->
-            <!--app:layout_constraintVertical_bias="0.864" />-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/tv_product_model"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:textSize="18sp"-->
-            <!--android:text="@string/text_model"-->
-            <!--app:layout_constraintStart_toStartOf="@+id/tv_product_brand"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/tv_product_name" />-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/ed_product_model"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@null"-->
-            <!--android:layout_marginStart="16dp"-->
-            <!--android:ems="10"-->
-            <!--android:hint="@string/hint_product_model"-->
-            <!--android:inputType="text"-->
-            <!--android:singleLine="true"-->
-            <!--android:textSize="14sp"-->
-            <!--android:text="@{product.model}"-->
-            <!--app:layout_constraintBaseline_toBaselineOf="@+id/tv_product_model"-->
-            <!--app:layout_constraintStart_toEndOf="@+id/tv_product_model" />-->
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
 

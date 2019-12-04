@@ -1,20 +1,25 @@
 package com.jiujiu.helper.ui.customers
 
-import androidx.lifecycle.MutableLiveData
-
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.jiujiu.helper.data.DataManager
+import com.jiujiu.helper.data.model.Customer
 import com.jiujiu.helper.ui.base.BaseViewModel
-
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CustomersFragViewModel @Inject constructor(
         dataManager: DataManager
 ) : BaseViewModel(dataManager) {
 
-    var customerName = MutableLiveData<String>()
+    fun deleteCustomer(customer: Customer) {
+        viewModelScope.launch {
+            dataManager.deleteCustomer(customer)
+        }
+    }
 
-    init {
-        customerName.value = dataManager.currentUserName
+    val customerLiveData: LiveData<List<Customer>> by lazy {
+        dataManager.allCustomers
     }
 
 }

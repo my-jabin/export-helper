@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="KeyValueTextView">
+        <attr name="keyText" format="string" />
+        <attr name="valueText" format="string" />
+        <!--<attr name="exampleDimension" format="dimension" />-->
+        <!--<attr name="exampleColor" format="color" />-->
+        <!--<attr name="exampleDrawable" format="color|reference" />-->
+    </declare-styleable>
+</resources>

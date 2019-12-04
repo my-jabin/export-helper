@@ -8,7 +8,7 @@ import com.jiujiu.helper.data.model.ProductType
 interface ProductTypeDao {
 
     @Query("select * from producttype where id = :id")
-    fun getTypeById(id: Long): LiveData<ProductType>
+    fun getTypeById(id: Long?): ProductType
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg types: ProductType)
@@ -21,4 +21,7 @@ interface ProductTypeDao {
 
     @Query("SELECT * FROM producttype")
     fun loadAllTypes(): LiveData<List<ProductType>>
+
+    @Query("select count(1) from producttype")
+    fun count(): Int
 }

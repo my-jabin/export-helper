@@ -10,10 +10,11 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import org.jetbrains.anko.AnkoLogger
 
 abstract class BaseRecyclerListAdapter<T, B : ViewDataBinding> protected constructor(
         diffCallback: DiffUtil.ItemCallback<T>
-) : ListAdapter<T, BaseRecyclerListAdapter.BaseViewHolder<B>>(diffCallback) {
+) : ListAdapter<T, BaseRecyclerListAdapter.BaseViewHolder<B>>(diffCallback), AnkoLogger {
 
     @get:LayoutRes
     abstract val itemLayoutId: Int
@@ -27,6 +28,7 @@ abstract class BaseRecyclerListAdapter<T, B : ViewDataBinding> protected constru
     override fun onBindViewHolder(holder: BaseViewHolder<B>, position: Int) {
         bindViewHolder(holder.binding, position)
     }
+
 
     abstract fun bindViewHolder(binding: B, position: Int)
 

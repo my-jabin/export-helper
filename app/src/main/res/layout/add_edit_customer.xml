@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ic_customer_name"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"
+            android:src="@drawable/ic_person_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/til_customer_name"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/til_customer_name" />
+
+        <ImageView
+            android:id="@+id/ic_customer_id_card"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"
+            android:src="@drawable/ic_id_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/til_customer_id_card"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/til_customer_id_card" />
+
+        <ImageView
+            android:id="@+id/ic_customer_address"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"
+            android:src="@drawable/ic_location_on_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_customer_address"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/layout_customer_address" />
+
+        <ImageView
+            android:id="@+id/ic_customer_phone"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"
+            android:src="@drawable/ic_phone_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/til_customer_phone"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/til_customer_phone" />
+
+        <ImageView
+            android:id="@+id/ic_customer_email"
+            android:layout_width="@dimen/icon_large"
+            android:layout_height="@dimen/icon_large"
+            android:src="@drawable/ic_email_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/til_customer_email"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/til_customer_email" />
+
+        <LinearLayout
+            android:id="@+id/layout_customer_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/til_customer_id_card">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_province"
+                style="@style/TextAppearance.helper.button.text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="@={customer.address.province}"
+                tools:text="福建省" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_city"
+                style="@style/TextAppearance.helper.button.text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="@={customer.address.city}"
+                tools:text="三明市" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_district"
+                style="@style/TextAppearance.helper.button.text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="@={customer.address.district}"
+                tools:text="沙县" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/blue_grey_light"
+            app:layout_constraintBottom_toTopOf="@id/layout_customer_address"
+            app:layout_constraintEnd_toEndOf="@id/layout_customer_address"
+            app:layout_constraintStart_toStartOf="@id/layout_customer_address" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/blue_grey_light"
+            app:layout_constraintEnd_toEndOf="@id/layout_customer_address"
+            app:layout_constraintStart_toStartOf="@id/layout_customer_address"
+            app:layout_constraintTop_toBottomOf="@id/layout_customer_address" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/button_save_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_normal"
+            app:backgroundTint="@color/colorAccent"
+            app:icon="@drawable/ic_save_white"
+            app:iconTint="@color/primaryTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_customer_email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_customer_name"
+            style="@style/TextAppearance.helper.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_small"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:hintTextAppearance="@style/TextAppearance.helper.hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_customer_name"
+                style="@style/TextAppearance.helper.edit.title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_name"
+                android:inputType="textPersonName|textCapWords"
+                android:text="@={customer.name}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_customer_id_card"
+            style="@style/TextAppearance.helper.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_normal"
+            app:counterEnabled="true"
+            app:counterMaxLength="18"
+            app:errorEnabled="true"
+            app:hintTextAppearance="@style/TextAppearance.helper.hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/til_customer_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_customer_id_card"
+                style="@style/TextAppearance.helper.edit.title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_id_number"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="18"
+                android:singleLine="true"
+                android:text="@={customer.iDNumber}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_customer_address_sub"
+            style="@style/TextAppearance.helper.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:hint="@string/text_street"
+            app:endIconMode="clear_text"
+            app:hintTextAppearance="@style/TextAppearance.helper.hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/layout_customer_address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_customer_address_sub"
+                style="@style/TextAppearance.helper.edit.title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName|textCapWords"
+                android:text="@={customer.address.street}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_customer_phone"
+            style="@style/TextAppearance.helper.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_normal"
+            app:endIconMode="clear_text"
+            app:hintTextAppearance="@style/TextAppearance.helper.hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/til_customer_address_sub">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_customer_phone"
+                style="@style/TextAppearance.helper.edit.title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_phone_number"
+                android:inputType="phone"
+                android:text="@={customer.phoneNumber}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_customer_email"
+            style="@style/TextAppearance.helper.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_normal"
+            app:endIconMode="clear_text"
+            app:hintTextAppearance="@style/TextAppearance.helper.hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/til_customer_phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_customer_email"
+                style="@style/TextAppearance.helper.edit.title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_email"
+                android:inputType="textEmailAddress"
+                android:text="@={customer.email}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--        <com.jiujiu.lib.CircleTextView-->
+        <!--            android:id="@+id/ctv_customer_name"-->
+        <!--            style="@style/TextAppearance.helper.body"-->
+        <!--            android:layout_width="@dimen/icon_xxLarge"-->
+        <!--            android:layout_height="@dimen/icon_xxLarge"-->
+        <!--            app:circleColor="@color/colorAccent"-->
+        <!--            app:circle_size="match_parent"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/til_customer_name"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:maxLength="1"-->
+        <!--            app:text="@{customer.name}"-->
+        <!--            app:textSize="32sp"-->
+        <!--            tools:text="HU" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jiujiu.helper.ui.customers.addEdit.AddEditCustomerViewModel" />
+
+        <variable
+            name="customer"
+            type="com.jiujiu.helper.data.model.Customer" />
+    </data>
+</layout>
+

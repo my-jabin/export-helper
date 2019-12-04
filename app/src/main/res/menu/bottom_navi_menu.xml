@@ -5,16 +5,16 @@
     <item
         android:id="@+id/bottom_navi_product"
         android:icon="@drawable/ic_product_black_24dp"
-        android:title="@string/products" />
+        android:title="@string/text_products" />
 
     <item
         android:id="@+id/bottom_navi_order"
         android:icon="@drawable/ic_order_black_24dp"
-        android:title="@string/orders" />
+        android:title="@string/text_orders" />
 
     <item
         android:id="@+id/bottom_navi_customer"
         android:icon="@drawable/ic_person_customer_24dp"
-        android:title="@string/customer" />
+        android:title="@string/text_customer" />
 
 </menu>

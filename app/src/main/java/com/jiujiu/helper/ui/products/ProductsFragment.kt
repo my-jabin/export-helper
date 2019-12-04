@@ -53,6 +53,7 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, ProductsFragViewM
 
     private fun setupLayout() {
         mAdapter = ProductsRecyclerListerAdapter()
+        binding.rvProducts.setHasFixedSize(true)
         binding.rvProducts.adapter = mAdapter
     }
 
@@ -63,7 +64,11 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, ProductsFragViewM
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_add -> {
-                val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(0)
+//                val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(0)
+//                findNavController().navigate(action)
+//                true
+
+                val action = MainFragmentDirections.actionMainFragmentToAddProductFragment()
                 findNavController().navigate(action)
                 true
             }

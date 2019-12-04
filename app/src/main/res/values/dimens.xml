@@ -8,10 +8,15 @@
     <dimen name="layout_normal_margin">8dp</dimen>
 
     <dimen name="text_size_normal">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="text_size_xlarge">24sp</dimen>
 
-
-    <dimen name="product_image_height">160dp</dimen>
+    <dimen name="product_image_height">240dp</dimen>
+    <dimen name="product_image_height_small">180dp</dimen>
     <dimen name="product_image_width">90dp</dimen>
+
+    <dimen name="customer_circle_image_width">56dp</dimen>
+    <dimen name="customer_circle_image_height">56dp</dimen>
 
     <dimen name="keyLine">64dp</dimen>
 
@@ -22,7 +27,24 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_large">32dp</dimen>
 
+    <dimen name="icon_small">12dp</dimen>
+    <dimen name="icon_normal">24dp</dimen>
+    <dimen name="icon_large">36dp</dimen>
+    <dimen name="icon_xlarge">48dp</dimen>
+    <dimen name="icon_xxLarge">64dp</dimen>
+
+
     <dimen name="padding_normal">16dp</dimen>
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_large">32dp</dimen>
+
+    <dimen name="text_padding_normal">@dimen/padding_normal</dimen>
+    <dimen name="text_padding_large">@dimen/padding_large</dimen>
+
+    <dimen name="corner_radius_normal">32dp</dimen>
+    <dimen name="corner_radius_small">16dp</dimen>
+
+    <dimen name="image_button_size_small">32dp</dimen>
+
+
 </resources>

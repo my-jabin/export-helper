@@ -6,4 +6,5 @@ import com.jiujiu.helper.data.DataManager
 
 import org.jetbrains.anko.AnkoLogger
 
-open class BaseViewModel(protected val dataManager: DataManager) : ViewModel(), AnkoLogger
+open class BaseViewModel(protected val dataManager: DataManager) : ViewModel(), AnkoLogger {
+}

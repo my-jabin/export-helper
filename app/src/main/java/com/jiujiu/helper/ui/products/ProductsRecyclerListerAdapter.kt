@@ -10,10 +10,11 @@ import com.jiujiu.helper.databinding.ProductItemBinding
 import com.jiujiu.helper.ui.base.BaseRecyclerListAdapter
 import com.jiujiu.helper.ui.main.MainFragmentDirections
 
-class ProductsRecyclerListerAdapter : BaseRecyclerListAdapter<Product, ProductItemBinding>(diff) {
+class ProductsRecyclerListerAdapter : BaseRecyclerListAdapter<Product, ProductItemBinding>(diffProduct) {
 
     override val itemLayoutId: Int
         get() = R.layout.product_item
+
 
     override fun bindViewHolder(binding: ProductItemBinding, position: Int) {
         val p = getItem(position) ?: return
@@ -25,12 +26,12 @@ class ProductsRecyclerListerAdapter : BaseRecyclerListAdapter<Product, ProductIt
 
     private fun onProductItemClick(v: View, @NonNull p: Product) {
         val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(p.id!!)
-        action.title = p.name
+        action.title = p.name ?: ""
         v.findNavController().navigate(action)
     }
 }
 
-val diff: DiffUtil.ItemCallback<Product> = object : DiffUtil.ItemCallback<Product>() {
+val diffProduct: DiffUtil.ItemCallback<Product> = object : DiffUtil.ItemCallback<Product>() {
     override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem.id == newItem.id
     }

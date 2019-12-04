@@ -10,6 +10,7 @@
     <!--Design colors-->
     <color name="red_dark">#F06423</color>
     <color name="red_dark2">#D85A1B</color>
+    <color name="red_money">#EF5B0D</color>
     <color name="cyan_light">#c9ebee</color>
     <color name="cyan">#b5e3e7</color>
     <color name="cyan_dark">#70BDC6</color>
@@ -23,6 +24,13 @@
     <color name="orange">#FFA500</color>
     <color name="yellow">#fff44f</color>
     <color name="divider">#1FFFFFFF</color>
+    <color name="background_main">@color/white</color>
     <color name="background_normal">#EFF0F1</color>
     <color name="white">#FFFFFF</color>
+    <color name="iconDark">#000000</color>
+    <color name="iconLight">#FFFFFF</color>
+    <color name="background_start">#a8e6cf</color>
+    <color name="background_end">#dcedc1</color>
+    <color name="disable">#B0000000</color>
+
 </resources>

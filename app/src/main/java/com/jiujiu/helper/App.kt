@@ -25,6 +25,7 @@ class App : DaggerApplication() {
         WorkManager.initialize(this, Configuration.Builder().setWorkerFactory(myWorkerFactory).build())
 
         setInMemoryRoomDatabases(mDatabase.openHelper.writableDatabase)
+
     }
 
     override fun applicationInjector(): AndroidInjector<out App> {

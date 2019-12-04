@@ -11,7 +11,10 @@ interface ProductDao {
     fun getProductById(id: Long): LiveData<Product>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg products: Product)
+    fun insertOrUpdate(vararg products: Product?)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insert(product: Product?)
 
     @Delete
     fun delete(product: Product)
@@ -21,4 +24,7 @@ interface ProductDao {
 
     @Query("SELECT * FROM product")
     fun loadAllProducts(): LiveData<List<Product>>
+
+    @Query("select count(1) from Product")
+    fun count(): Int
 }

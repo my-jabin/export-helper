@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.jiujiu.helper.di.ViewModelFactory
 import com.jiujiu.helper.di.scope.ViewModelKey
 import com.jiujiu.helper.ui.customers.CustomersFragViewModel
+import com.jiujiu.helper.ui.customers.addEdit.AddEditCustomerViewModel
 import com.jiujiu.helper.ui.main.MainActivityViewModel
 import com.jiujiu.helper.ui.main.MainFragViewModel
 import com.jiujiu.helper.ui.orders.OrdersFragViewModel
 import com.jiujiu.helper.ui.products.ProductsFragViewModel
+import com.jiujiu.helper.ui.products.add.ProductAddViewModel
 import com.jiujiu.helper.ui.products.details.ProductDetailViewModel
 
 import dagger.Binds
@@ -46,8 +48,18 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
+    @ViewModelKey(AddEditCustomerViewModel::class)
+    abstract fun bindsAddEditCustomerViewModel(viewModel: AddEditCustomerViewModel): ViewModel
+
+    @Binds
+    @IntoMap
     @ViewModelKey(ProductDetailViewModel::class)
     abstract fun bindsProductDetailViewModel(viewModel: ProductDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProductAddViewModel::class)
+    abstract fun bindsProductAddViewModel(viewModel: ProductAddViewModel): ViewModel
 
 
     @Binds
