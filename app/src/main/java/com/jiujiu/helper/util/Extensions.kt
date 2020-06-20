@@ -12,6 +12,9 @@ import android.util.Patterns
 import android.view.View
 import android.widget.*
 import androidx.databinding.InverseBindingListener
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.github.promeg.pinyinhelper.Pinyin
 import com.jiujiu.helper.R
 
@@ -92,5 +95,29 @@ fun String.isEmail(): Boolean {
 }
 
 fun String.isValidPassword(): Boolean {
-    return !TextUtils.isEmpty(this) && this.length > 6
+    return !TextUtils.isEmpty(this) && this.length >= 6
+}
+
+// move to FirebaseLiveData?
+fun <T> FirebaseLiveData<T>.getFirstAsLiveData(): LiveData<Result<T?>> {
+    return Transformations.switchMap(this) { r ->
+        val newValue = MutableLiveData<Result<T?>>()
+        if (r.isSuccess) {
+            val resultAsList = r.getOrNull()
+            if (resultAsList != null && resultAsList.isNotEmpty()) {
+                newValue.postValue(Result.success(resultAsList[0]))
+            } else {
+                newValue.postValue(Result.success(null))
+            }
+        } else {
+            newValue.postValue(Result.failure(r.exceptionOrNull()!!))
+        }
+        newValue
+    }
+}
+
+fun <T> MutableLiveData<T>.notifyObserver() {
+    if (this.hasActiveObservers()) {
+        this.value = this.value
+    }
 }

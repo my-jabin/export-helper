@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.*
@@ -27,6 +28,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
         checkAuthentication()
         setupView()
         // todo: allow user to reset the pwd by sending email
+        // todo: login with google
     }
 
     private fun setupView() {
@@ -94,7 +96,8 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
                     hideProgress()
                     when (task.exception) {
                         is FirebaseAuthInvalidUserException -> showEmailErrorMessage(R.string.error_email_not_exist)
-                        is FirebaseAuthInvalidCredentialsException -> showPwdErrorMessage(R.string.error_email_invalid)
+                        is FirebaseAuthInvalidCredentialsException -> showPwdErrorMessage(R.string.error_pwd_invalid)
+                        else -> Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }

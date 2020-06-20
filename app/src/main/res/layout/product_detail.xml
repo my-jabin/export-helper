@@ -57,9 +57,9 @@
                 style="@style/TextAppearance.helper.body.money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
                 android:drawableLeft="@drawable/ic_buy_black_20"
                 android:drawablePadding="@dimen/padding_small"
-                android:layout_marginTop="@dimen/margin_small"
                 android:text="@{ product.displayPurchasePrice}"
                 app:layout_constraintStart_toStartOf="@+id/guideline_25"
                 app:layout_constraintTop_toBottomOf="@+id/tv_product_detail_display"
@@ -122,7 +122,9 @@
                 app:keyText="@string/product_brand_zh"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider_main"
+                app:orientation="HORIZONTAL"
                 app:valueText="@{product.brandZh}"
+                tools:valueText="aptmail"
                 tools:layout_editor_absoluteY="8dp" />
 
             <com.jiujiu.helper.ui.widget.KeyValueTextView
@@ -134,7 +136,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/kvtv_product_detail_brand_zh"
-                app:valueText="@{product.nameZh}" />
+                app:orientation="VERTICAL"
+                app:valueText="@{product.nameZh}"
+                tools:valueText="爱他美" />
 
             <com.jiujiu.helper.ui.widget.KeyValueTextView
                 android:id="@+id/kvtv_product_detail_model_zh"

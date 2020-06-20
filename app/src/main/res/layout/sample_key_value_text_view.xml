@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.jiujiu.helper.ui.widget.KeyValueTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="40dp"
+        app:orientation="HORIZONTAL"
+        tools:keyText="hello! This is a key!"
+        tools:valueText="World" />
+
+    <com.jiujiu.lib.CircleTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:text="Hello"
+        app:borderWidth="2dp"
+        app:borderColor="@color/colorAccent"
+        app:circleColor="@color/blue_grey_light"
+        app:textSize="23sp" />
+
+    <com.jiujiu.helper.ui.widget.TextInputView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text="Hello"
+        app:hint="ewde" />
+
+
+</LinearLayout>

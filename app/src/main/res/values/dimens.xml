@@ -7,13 +7,15 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="layout_normal_margin">8dp</dimen>
 
-    <dimen name="text_size_normal">18sp</dimen>
-    <dimen name="text_size_large">22sp</dimen>
-    <dimen name="text_size_xlarge">24sp</dimen>
+    <!--    <dimen name="text_size_normal">18sp</dimen>-->
+    <!--    <dimen name="text_size_large">22sp</dimen>-->
+    <!--    <dimen name="text_size_xlarge">24sp</dimen>-->
 
     <dimen name="product_image_height">240dp</dimen>
     <dimen name="product_image_height_small">180dp</dimen>
     <dimen name="product_image_width">90dp</dimen>
+
+    <dimen name="add_product_card_height">150dp</dimen>
 
     <dimen name="customer_circle_image_width">56dp</dimen>
     <dimen name="customer_circle_image_height">56dp</dimen>
@@ -42,9 +44,38 @@
     <dimen name="text_padding_large">@dimen/padding_large</dimen>
 
     <dimen name="corner_radius_normal">32dp</dimen>
-    <dimen name="corner_radius_small">16dp</dimen>
+    <dimen name="corner_radius_small">12dp</dimen>
+    <dimen name="corner_radius_extra_small">8dp</dimen>
 
     <dimen name="image_button_size_small">32dp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="dialog_height_add_product">400dp</dimen>
+    <dimen name="section_height_normal">56dp</dimen>
+    <dimen name="add_picture_height">150dp</dimen>
 
+    <dimen name="shadow_small">2dp</dimen>
+    <dimen name="shadow_normal">6dp</dimen>
+    <dimen name="shadow_large">12dp</dimen>
+    <dimen name="shadow_xlarge">24dp</dimen>
+    <dimen name="margin_extra_small">4dp</dimen>
+
+    <dimen name="text_size_headline">24sp</dimen>
+    <dimen name="text_size_page_title">20sp</dimen>
+    <dimen name="text_size_subtitle">16sp</dimen>
+    <dimen name="text_size_paragraph">14sp</dimen>
+    <dimen name="text_size_list_title">14sp</dimen>
+    <dimen name="text_size_list_item">16sp</dimen>
+    <dimen name="text_size_main">16sp</dimen>
+    <dimen name="text_size_secondary">14sp</dimen>
+    <dimen name="text_size_important_text">16sp</dimen>
+    <dimen name="text_size_button">14sp</dimen>
+    <dimen name="text_size_menu">14sp</dimen>
+    <dimen name="text_size_tap">14sp</dimen>
+    <dimen name="text_size_input_text">16sp</dimen>
+    <dimen name="text_size_error">12sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+    <dimen name="text_size_input_text_highlight">26sp</dimen>
+
+    <dimen name="card_view_content_padding">8dp</dimen>
 
 </resources>

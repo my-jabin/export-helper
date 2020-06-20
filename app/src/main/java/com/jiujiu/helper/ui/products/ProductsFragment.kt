@@ -3,20 +3,23 @@ package com.jiujiu.helper.ui.products
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.jiujiu.helper.BR
 import com.jiujiu.helper.R
 import com.jiujiu.helper.databinding.FragmentProductsBinding
 import com.jiujiu.helper.ui.base.BaseFragment
 import com.jiujiu.helper.ui.main.MainFragmentDirections
 import com.jiujiu.helper.ui.widget.SpaceItemDecoration
+import kotlinx.android.synthetic.main.fragment_products.*
 import org.jetbrains.anko.info
+import javax.inject.Inject
 
 
 class ProductsFragment : BaseFragment<FragmentProductsBinding, ProductsFragViewModel>() {
 
-    private lateinit var mAdapter: ProductsRecyclerListerAdapter
+    @Inject
+    lateinit var mAdapter: ProductsFirestoreRecyclerAdapter
 
     override val bindingVariableId: Int
         get() = BR.viewModel
@@ -35,7 +38,7 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, ProductsFragViewM
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvProducts.addItemDecoration(SpaceItemDecoration(12,12,12,12))
+        binding.rvProducts.addItemDecoration(SpaceItemDecoration(12, 12, 12, 12))
         setupLayout()
         setupViewModel()
         info("onViewCreated: ")
@@ -52,19 +55,27 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, ProductsFragViewM
     }
 
     private fun setupLayout() {
-        mAdapter = ProductsRecyclerListerAdapter()
         binding.rvProducts.setHasFixedSize(true)
-        binding.rvProducts.adapter = mAdapter
+        ev_products.setRetryListener {
+            // todo: what to do when click retry button
+            rv_products.visibility = View.VISIBLE
+            ev_products.visibility = View.GONE
+        }
+        val onError = { e: FirebaseFirestoreException ->
+            rv_products.visibility = View.GONE
+            ev_products.visibility = View.VISIBLE
+            ev_products.title = e.localizedMessage
+        }
+        binding.rvProducts.adapter = mAdapter.toFirebaseRecyclerAdapter(onError)
     }
 
     private fun setupViewModel() {
-        viewModel.productLiveData.observe(this, Observer { mAdapter.submitList(it) })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_add -> {
-//                val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(0)
+//                val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(null)
 //                findNavController().navigate(action)
 //                true
 

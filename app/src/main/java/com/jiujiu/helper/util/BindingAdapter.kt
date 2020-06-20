@@ -29,38 +29,41 @@ fun inverseSelectedValue(spinner: Spinner): Any? {
 }
 
 @BindingAdapter("productTypes")
-fun setProductTypes(autoCompleteTextView: AutoCompleteTextView, entries: List<ProductType>?) {
-    if (entries != null) {
+fun setProductTypes(autoCompleteTextView: AutoCompleteTextView, result: Result<List<ProductType>>?) {
+    if (result != null && result.isSuccess) {
+        val entries = result.getOrDefault(arrayListOf()) as MutableList
+        entries.add(ProductType.empty(autoCompleteTextView.context.applicationContext))
         val adapter = AutoCompleteProductTypeAdapter(autoCompleteTextView.context, entries)
         autoCompleteTextView.setAdapter(adapter)
     }
 }
 
-@BindingAdapter("typeId")
-fun selectedValue(view: AutoCompleteTextView, typeId: Int?) {
-    if (view.adapter != null && typeId != null) {
-        if (view.adapter is AutoCompleteProductTypeAdapter) {
-            val adapter = view.adapter as AutoCompleteProductTypeAdapter
-            val position = adapter.findPositionByTypeId(typeId)
-            if (position >= 0) {
-                view.setSelection(position)
-                view.tag = position
-            }
-        }
-    }
-}
 
-@BindingAdapter("typeIdAttrChanged")
-fun setInverseBindingListener(autoCompleteTextView: AutoCompleteTextView, listener: InverseBindingListener) {
-    autoCompleteTextView.setInverseBindingListener(listener)
-}
-
-@InverseBindingAdapter(attribute = "typeId", event = "typeIdAttrChanged")
-fun inverseSelectedValue(view: AutoCompleteTextView): Int? {
-    if (view.adapter != null) {
-        val adapter = view.adapter as? AutoCompleteProductTypeAdapter
-        val type = adapter?.getTypeByPosition(view.tag as Int)
-        return type?.id
-    }
-    return null
-}
+//@BindingAdapter("typeId")
+//fun selectedValue(view: AutoCompleteTextView, typeId: Int?) {
+//    if (view.adapter != null && typeId != null) {
+//        if (view.adapter is AutoCompleteProductTypeAdapter) {
+//            val adapter = view.adapter as AutoCompleteProductTypeAdapter
+//            val position = adapter.findPositionByTypeId(typeId)
+//            if (position >= 0) {
+//                view.setSelection(position)
+//                view.tag = position
+//            }
+//        }
+//    }
+//}
+//
+//@BindingAdapter("typeIdAttrChanged")
+//fun setInverseBindingListener(autoCompleteTextView: AutoCompleteTextView, listener: InverseBindingListener) {
+//    autoCompleteTextView.setInverseBindingListener(listener)
+//}
+//
+//@InverseBindingAdapter(attribute = "typeId", event = "typeIdAttrChanged")
+//fun inverseSelectedValue(view: AutoCompleteTextView): Int? {
+//    if (view.adapter != null) {
+//        val adapter = view.adapter as? AutoCompleteProductTypeAdapter
+//        val type = adapter?.getTypeByPosition(view.tag as Int)
+//        return type?.id
+//    }
+//    return null
+//}

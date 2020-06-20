@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="currency"
+            type="java.util.Currency" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_normal">
+
+        <TextView
+            android:id="@+id/currency_displayName"
+            style="@style/TextAppearance.helper.body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{currency.displayName}"
+            tools:text="CYN" />
+
+        <TextView
+            android:id="@+id/currency_symbol"
+            style="@style/TextAppearance.helper.body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{currency.symbol}"
+            tools:text="CYN" />
+
+    </LinearLayout>
+</layout>
+

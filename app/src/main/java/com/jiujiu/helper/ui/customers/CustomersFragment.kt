@@ -14,6 +14,8 @@ import com.jiujiu.helper.ui.main.MainFragmentDirections
 import com.jiujiu.helper.ui.widget.SpaceItemDecoration
 import com.jiujiu.helper.util.toPinyin
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter
+import kotlinx.android.synthetic.main.fragment_customers.*
+import org.jetbrains.anko.info
 
 
 class CustomersFragment : BaseFragment<FragmentCustomersBinding, CustomersFragViewModel>() {
@@ -41,13 +43,25 @@ class CustomersFragment : BaseFragment<FragmentCustomersBinding, CustomersFragVi
 
     private fun setupViewModel() {
         viewModel.customerLiveData.observe(this, Observer {
-            val adapter = binding.rvCustomer.adapter as? SectionedRecyclerViewAdapter
-            adapter?.removeAllSections()
-            val groupedCustomer = it.groupBy { c -> c.name?.get(0)?.toPinyin()?.get(0) }.toSortedMap(compareBy<Char?> { c -> c })
-            groupedCustomer.entries.forEach { entry ->
-                adapter?.addSection(CustomerSection(entry.key, entry.value, onDeleteCustomer))
+            if (it.isSuccess) {
+                ev_customers.visibility = View.GONE
+                rv_customer.visibility = View.VISIBLE
+                val data = it.getOrNull()
+                info { "get customer size = ${data?.size}" }
+                val adapter = binding.rvCustomer.adapter as? SectionedRecyclerViewAdapter
+                adapter?.removeAllSections()
+                val groupedCustomer = data?.groupBy { c -> c.name?.get(0)?.toPinyin()?.get(0) }?.toSortedMap(compareBy<Char?> { c -> c })
+                groupedCustomer?.entries?.forEach { entry ->
+                    adapter?.addSection(CustomerSection(entry.key, entry.value, onDeleteCustomer))
+                }
+                adapter?.notifyDataSetChanged()
+            } else {
+                it.exceptionOrNull()?.localizedMessage?.apply {
+                    ev_customers.visibility = View.VISIBLE
+                    rv_customer.visibility = View.GONE
+                    ev_customers.title = this
+                }
             }
-            adapter?.notifyDataSetChanged()
         })
     }
 
@@ -56,7 +70,7 @@ class CustomersFragment : BaseFragment<FragmentCustomersBinding, CustomersFragVi
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_add -> {
-                val action = MainFragmentDirections.actionMainFragmentToAddEditCustomerFragment(-1)
+                val action = MainFragmentDirections.actionMainFragmentToAddEditCustomerFragment("")
                 findNavController().navigate(action)
                 true
             }

@@ -7,9 +7,9 @@ class ProductVO(product: Product, locale: Locale) {
     val displayName = if (locale == Locale.CHINESE) product.brandZh + product.nameZh + product.modelZh
     else "${product.brand} ${product.name} ${product.model}"
 
-    val displaySalePrice = "${product.saleCurrency?.symbol}${product.salePrice}"
+    val displaySalePrice = "${product.saleCurrencyCode}${product.salePrice}"
 
-    val displayPurchasePrice = "${product.purchaseCurrency?.symbol}${product.purchasePrice}"
+    val displayPurchasePrice = "${product.purchaseCurrencyCode}${product.purchasePrice}"
 
     val brand = product.brand
 
@@ -25,9 +25,7 @@ class ProductVO(product: Product, locale: Locale) {
 
     val netWeight: String = "${product.netWeight}kg"
 
-    val typeId = product.typeId
-
-    var type: String? = null
+    var type: String? = product.type
 
     val madeIn = product.madeIn
 

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="TextInputEditTextFix">
-        <attr name="suffix" format="string" />
+    <declare-styleable name="TextInputView">
+        <attr name="hint" format="string" />
+        <attr name="hintTextAppearance" format="reference" />
+        <attr name="text" format="string" />
+        <attr name="textAppearance" format="reference" />
+        <attr name="endIconDrawable" format="reference" />
+        <attr name="placeholderText" format="string" />
+        <attr name="suffixText" format="string" />
+        <attr name="suffixTextAppearance" format="reference" />
+
     </declare-styleable>
 
 </resources>

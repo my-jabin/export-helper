@@ -35,16 +35,16 @@ class CustomerSection(val title: Char?, val customers: List<Customer>, val callb
 
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         val itemViewHolder = holder as? ItemViewHolder
-        var customerId: Long?
+        var customerId: String?
         customers[position].let {
             customerId = it.id
             itemViewHolder?.circleText?.setText(it.name ?: "")
             itemViewHolder?.customerName?.text = it.name
 
-            if (it.address == null) {
+            if (!it.validAddress()) {
                 itemViewHolder?.customerAddress?.visibility = View.GONE
             } else {
-                itemViewHolder?.customerAddress?.text = it.address.toString()
+                itemViewHolder?.customerAddress?.text = it.address
             }
 
             if (it.IDNumber == null) {

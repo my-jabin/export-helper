@@ -1,17 +1,23 @@
 package com.jiujiu.helper.data.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
+import com.jiujiu.helper.R
 
-@Entity
 data class ProductType(
-        val name: String
+        var id: String? = null,
+        var name: String? = null,
+        var userUID: String? = FirebaseAuth.getInstance().uid,
+        var frequency: Int = 0   // how often does a user select this type
+        // 0: normal 1: often -1: seldom
 ) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int? = null
 
     override fun toString(): String {
-        return name
+        return name ?: ""
+    }
+
+    companion object {
+        fun empty(context: Context) = ProductType(name = context.getString(R.string.text_add_product_type))
     }
 }
 

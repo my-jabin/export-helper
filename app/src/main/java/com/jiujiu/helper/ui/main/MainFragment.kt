@@ -8,7 +8,6 @@ import androidx.viewpager.widget.ViewPager
 import com.jiujiu.helper.R
 import com.jiujiu.helper.databinding.FragmentMainBinding
 import com.jiujiu.helper.ui.base.BaseFragment
-import org.jetbrains.anko.info
 
 class MainFragment : BaseFragment<FragmentMainBinding, MainFragViewModel>() {
 
@@ -49,7 +48,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainFragViewModel>() {
     private fun showFragment(@IdRes itemId: Int) {
         // the following fragment from state `onDestroyView` to `onViewCreated` if they are being switched
         when (itemId) {
-            R.id.bottom_navi_order -> binding.viewPager.setCurrentItem(1, true)
+//            R.id.bottom_navi_order -> binding.viewPager.setCurrentItem(1, true)
             R.id.bottom_navi_customer -> binding.viewPager.setCurrentItem(2, true)
             else -> binding.viewPager.setCurrentItem(0, true)
         }

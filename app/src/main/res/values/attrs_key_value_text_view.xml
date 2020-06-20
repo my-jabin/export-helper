@@ -1,9 +1,13 @@
 <resources>
     <declare-styleable name="KeyValueTextView">
         <attr name="keyText" format="string" />
+        <attr name="keyTextAppearance" format="reference" />
         <attr name="valueText" format="string" />
-        <!--<attr name="exampleDimension" format="dimension" />-->
-        <!--<attr name="exampleColor" format="color" />-->
-        <!--<attr name="exampleDrawable" format="color|reference" />-->
+        <attr name="valueTextAppearance" format="reference" />
+        <attr name="orientation" format="enum">
+            <enum name="HORIZONTAL" value="0" />
+            <enum name="VERTICAL" value="1" />
+        </attr>
+        <attr name="android:selectableItemBackground" />
     </declare-styleable>
 </resources>

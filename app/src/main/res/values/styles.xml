@@ -28,30 +28,46 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="TextAppearance.helper.title" parent="@style/TextAppearance.MaterialComponents.Headline6">
-        <item name="fontFamily">@font/josefin_sans</item>
+    <style name="TextAppearance.helper.title" parent="">
+        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="textSize">@dimen/text_size_page_title</item>
+        <item name="textColor">@color/primaryTextColor</item>
     </style>
 
     <style name="TextAppearance.helper.button.text" parent="@style/Widget.MaterialComponents.Button.TextButton">
-        <item name="fontFamily">@font/josefin_sans</item>
-        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="android:textSize">@dimen/text_size_button</item>
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
+    <style name="TextAppearance.helper.button.icon" parent="@style/Widget.MaterialComponents.Button.Icon">
+        <item name="backgroundTint">@color/fui_transparent</item>
+    </style>
+
+    <style name="TextAppearance.helper.button" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="android:textSize">@dimen/text_size_button</item>
+    </style>
+
+    <style name="TextAppearance.helper.button.outline" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="android:textSize">@dimen/text_size_button</item>
+    </style>
+
     <style name="TextAppearance.helper.subTitle" parent="@style/TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/josefin_sans</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
     </style>
 
     <style name="TextAppearance.helper.body1" parent="@style/TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/josefin_sans</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
     </style>
 
     <style name="TextAppearance.helper.body" parent="@style/TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/josefin_sans</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
     </style>
 
     <style name="TextAppearance.helper.caption" parent="@style/TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/josefin_sans</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
     </style>
 
 
@@ -64,8 +80,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.helper.subTitle.product" parent="TextAppearance.helper.subTitle">
-    </style>
+    <style name="TextAppearance.helper.subTitle.product" parent="TextAppearance.helper.subTitle"></style>
 
     <style name="TextAppearance.helper.body.product" parent="TextAppearance.helper.body">
         <item name="android:background">@color/background_main</item>
@@ -87,7 +102,6 @@
 
 
     <style name="TextAppearance.helper.edit" parent="TextAppearance.helper.body">
-        <item name="android:background">@color/white</item>
         <item name="android:inputType">text</item>
     </style>
 
@@ -102,18 +116,34 @@
         <item name="android:inputType">text</item>
     </style>
 
+    <style name="TextAppearance.helper.edit.money" parent="TextAppearance.helper.edit">
+        <item name="android:textColor">@color/red_money</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="TextAppearance.helper.textInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
         <item name="android:layout_marginLeft">@dimen/margin_small</item>
         <item name="android:layout_marginRight">@dimen/margin_small</item>
         <item name="android:layout_marginTop">2dp</item>
     </style>
 
+    <style name="TextAppearance.helper.textInput.addProduct" parent="TextAppearance.helper.textInput">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+    </style>
+
     <style name="TextAppearance.helper.textInput.outline" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="android:layout_marginLeft">@dimen/margin_small</item>
-        <item name="android:layout_marginRight">@dimen/margin_small</item>
         <item name="boxBackgroundColor">@color/white</item>
-        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="android:textCursorDrawable">@null</item>
         <item name="boxStrokeWidth">1dp</item>
+    </style>
+
+    <style name="TextAppearance.helper.textInput.outline.addProduct" parent="TextAppearance.helper.textInput.outline">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_radius_extra_small</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_radius_extra_small</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_radius_extra_small</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_radius_extra_small</item>
     </style>
 
     <style name="TextAppearance.helper.textInput.outline.login" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -131,7 +161,8 @@
     </style>
 
     <style name="TextAppearance.helper.hint" parent="TextAppearance.Design.Hint">
-        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="android:textSize">@dimen/text_size_secondary</item>
         <item name="android:textColor">@color/hintTextColor</item>
     </style>
 
@@ -140,6 +171,60 @@
         <item name="android:textColor">@color/red_money</item>
         <item name="android:textSize">18sp</item>
         <item name="android:background">@color/white</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
+    </style>
+
+    <style name="TextAppearance.keyValueTextView.key" parent="TextAppearance.AppCompat.Title">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="TextAppearance.keyValueTextView.value" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="android:textColor">@color/hintTextColor</item>
+    </style>
+
+
+    <style name="TextAppearance.textInputView.hint" parent="TextAppearance.helper.hint">
+        <item name="android:fontFamily">@font/josefin_sans</item>
+    </style>
+
+    <!--    <style name="TextAppearance.moneyInput.hint" parent="TextAppearance.helper.hint">-->
+    <!--        <item name="android:textSize">14sp</item>-->
+    <!--        <item name="android:fontFamily">@font/josefin_sans</item>-->
+    <!--        <item name="android:textColor">@color/hintTextColor</item>-->
+    <!--    </style>-->
+
+    <style name="TextAppearance.moneyInput.value" parent="TextAppearance.helper.body.money">
+        <item name="android:textSize">@dimen/text_size_input_text_highlight</item>
+        <item name="android:inputType">number|numberDecimal</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textCursorDrawable">@drawable/default_cursor</item>
+    </style>
+
+    <style name="TextAppearance.textInputView.Text" parent="TextAppearance.helper.body">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.helper.MaterialCardView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">8dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
+    </style>
+
+    <style name="Widget.helper.cardView" parent="">
+        <item name="android:backgroundTint">@color/background_normal</item>
+        <item name="cardCornerRadius">@dimen/corner_radius_small</item>
+        <item name="cardElevation">@dimen/shadow_small</item>
+        <item name="contentPadding">@dimen/card_view_content_padding</item>
+        <item name="strokeColor">@color/border_color</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 
 

@@ -10,7 +10,7 @@ class ProductsFragViewModel @Inject constructor(
         dataManager: DataManager
 ) : BaseViewModel(dataManager) {
 
-    val productLiveData: LiveData<List<Product>> by lazy {
+    val productLiveData: LiveData<Result<List<Product>>> by lazy {
         dataManager.allProducts
     }
 

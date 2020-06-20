@@ -13,7 +13,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/background_normal">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_customer"
@@ -25,6 +26,14 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:listitem="@layout/customer_item" />
+
+        <tr.xip.errorview.ErrorView
+            android:id="@+id/ev_customers"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:ev_retryColor="@color/primaryTextColor"
+            app:ev_retryBackground="@color/background_end" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

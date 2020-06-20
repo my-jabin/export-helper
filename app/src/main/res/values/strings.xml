@@ -73,17 +73,18 @@
     <string name="hint_product_name">Product name</string>
     <string name="created_at">"Created at: %s"</string>
 
-    <string name="hint_add_product_name">product name</string>
+    <string name="hint_add_product_name">product name*</string>
     <string name="hint_add_product_name_ch">product name(chinese)</string>
-    <string name="hint_add_product_brand">Brand</string>
+    <string name="hint_add_product_brand">Brand*</string>
 
     <string name="hint_add_product_brand_ch">Brand(chinese)</string>
     <string name="hint_add_product_model">Model</string>
+    <string name="hint_add_product_model_ch">Model(chinese)</string>
     <string name="hint_add_product_netweight">Net weight</string>
-    <string name="hint_add_product_type">Type</string>
+    <string name="hint_add_product_type">Product type</string>
     <string name="hint_add_product_pruchase_price">@string/text_purchase_price</string>
     <string name="hint_add_product_sale_price">@string/text_sale_price</string>
-    <string name="hint_add_product_origin">Made in</string>
+    <string name="hint_add_product_made_in">Made in</string>
     <string name="hint_add_product_purchase_approach">Purchase approach</string>
     <string name="hint_add_product_description">Description</string>
     <string name="hint_login_username">Username</string>
@@ -118,6 +119,36 @@
     <string name="login_create_account">You don\'t have a account, then <a>create one</a></string>
     <string name="text_register">Register</string>
     <string name="error_email_exist">Email already exist</string>
+    <string name="text_add_product_type">Add type</string>
+    <string name="argument_add_product_ID" translatable="false">argument_add_product_id</string>
+    <string name="text_add_or_modify_product">Add or modify product</string>
+    <string name="text_next">next</string>
+    <string name="text_previous">previous</string>
+    <string name="add_product_title">Please edit the following product information</string>
+    <string name="text_required">*Required</string>
+    <string name="select_currency">Select Currency</string>
+    <string name="select_multiple_title">Multiple selection</string>
+    <string name="select_product_type_title">Select product types</string>
+    <string name="text_finish">Finish</string>
+    <string name="text_picture">Picture</string>
+    <string name="add_product_picture_hint">Pictures. Maximum 10 pictures</string>
+    <string name="text_add_picture">Add pictures</string>
+    <string name="add_product_picture_required">Product basic information(*required)</string>
+
+    <string name="icon_buy">&#xe70d;</string>
+    <string name="icon_sale">&#xe70b;</string>
+    <string name="icon_location">&#xe6f3;</string>
+    <string name="icon_currency_usd">&#xe624;</string>
+    <string name="icon_currency_euro">&#xe61a;</string>
+    <string name="icon_currency_cny">&#xe619;</string>
+    <string name="icon_currency_gbp">&#xe6e5;</string>
+    <string name="icon_kg">&#xe66f;</string>
+    <string name="icon_form">&#xe6a2;</string>
+    <string name="text_warning">Warning</string>
+    <string name="text_confirm">Confirm</string>
+    <string name="text_cancel">Cancel</string>
+
+
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>
@@ -156,4 +187,11 @@
     </string-array>
     <string-array name="multi_select_list_preference_default_value" />
 
+    <string-array name="product_types">
+        <item>Milk powder</item>
+        <item>Cosmetic</item>
+        <item>Nutrition</item>
+        <item>Medicine</item>
+        <item>Other</item>
+    </string-array>
 </resources>

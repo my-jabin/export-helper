@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.jiujiu.helper.BR
 import com.jiujiu.helper.R
-import com.jiujiu.helper.data.model.Address
 import com.jiujiu.helper.data.model.Customer
 import com.jiujiu.helper.databinding.AddEditCustomerBinding
 import com.jiujiu.helper.ui.base.BaseFragment
@@ -19,6 +18,7 @@ import com.lljjcoder.bean.ProvinceBean
 import com.lljjcoder.citywheel.CityConfig
 import com.lljjcoder.style.citypickerview.CityPickerView
 import kotlinx.android.synthetic.main.add_edit_customer.*
+import org.jetbrains.anko.info
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class AddEditCustomerFragment : BaseFragment<AddEditCustomerBinding, AddEditCustomerViewModel>() {
@@ -60,9 +60,6 @@ class AddEditCustomerFragment : BaseFragment<AddEditCustomerBinding, AddEditCust
                 button_district.text = district?.name
             }
         })
-//        et_customer_name.afterTextChanged {
-//            ctv_customer_name.setText(it)
-//        }
         layout_customer_address.onClick { selectCity() }
         button_province.onClick { selectCity() }
         button_city.onClick { selectCity() }
@@ -98,18 +95,22 @@ class AddEditCustomerFragment : BaseFragment<AddEditCustomerBinding, AddEditCust
     }
 
     private fun setupViewModel() {
-        viewModel.customerLiveData.observe(this, Observer {
-            binding.customer = it ?: Customer().apply {
-                address = Address(
-                        street = null,
-                        province = cityConfig.defaultProvinceName,
-                        city = cityConfig.defaultCityName,
-                        district = cityConfig.defaultDistrict
-                )
+        viewModel.customerLiveData.observe(this.viewLifecycleOwner, Observer {
+            if (it.isSuccess) {
+                binding.customer = it.getOrNull()?.get(0) ?: Customer().apply {
+                    street = null
+                    province = cityConfig.defaultProvinceName
+                    city = cityConfig.defaultCityName
+                    district = cityConfig.defaultDistrict
+                }
+            } else {
+                info {
+                    it.exceptionOrNull()
+                }
             }
         })
 
-        viewModel.navigateUpEvent.observe(this, Observer {
+        viewModel.navigateUpEvent.observe(this.viewLifecycleOwner, Observer {
             findNavController().navigateUp()
         })
     }

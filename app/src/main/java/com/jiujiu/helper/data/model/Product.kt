@@ -1,13 +1,14 @@
 package com.jiujiu.helper.data.model
 
-import androidx.room.*
-import java.text.SimpleDateFormat
+import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
+import org.jetbrains.anko.configuration
 import java.util.*
 
-@Entity(foreignKeys = arrayOf(
-        ForeignKey(entity = ProductType::class, parentColumns = arrayOf("id"), childColumns = arrayOf("type_id")
-        )))
 data class Product(
+        var id: String? = null,
+
+        var userUID: String? = FirebaseAuth.getInstance().uid,
 
         var name: String? = null,
 
@@ -21,8 +22,7 @@ data class Product(
 
         var modelZh: String? = null,
 
-        @ColumnInfo(name = "type_id")
-        var typeId: Int? = null,
+        var type: String? = null,
 
         var description: String? = null,
 
@@ -30,33 +30,24 @@ data class Product(
 
         var salePrice: Double? = null,
 
-        var saleCurrency: Currency? = Currency.getInstance("CNY"),
+        var saleCurrencyCode: String? = "CNY", // chinese currency code
 
         var purchasePrice: Double? = null,
 
-        var purchaseCurrency: Currency? = Currency.getInstance(Locale.getDefault()),
+        var purchaseCurrencyCode: String? = Currency.getInstance(Locale.getDefault()).currencyCode,
 
         var madeIn: String? = "Germany",
 
         var purchaseApproach: String? = null
-
 ) {
-    @ColumnInfo(name = "created_at")
-    var createdAt: Calendar? = Calendar.getInstance(Locale.getDefault())
 
-    @ColumnInfo(name = "updated_at")
-    var updateAt: Calendar? = Calendar.getInstance(Locale.getDefault())
-
-    @PrimaryKey(autoGenerate = true)
-    var id: Long? = null
-
-    @Ignore
-    var createdAtDataString: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(createdAt?.time)
-
-    fun transform(locale: Locale): ProductVO {
-        return ProductVO(this, locale)
+    fun toProductVo(context: Context): ProductVO {
+        return ProductVO(this, context.configuration.locales.get(0))
     }
 
+//    override fun toString(): String {
+//        return "name[${name}],nameZh[${nameZh}],[${name}],name[${name}],name[${name}],name[${name}],"
+//    }
 }
 
 

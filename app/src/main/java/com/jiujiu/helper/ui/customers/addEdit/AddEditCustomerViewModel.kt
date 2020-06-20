@@ -15,15 +15,15 @@ class AddEditCustomerViewModel @Inject constructor(
         dataManager: DataManager
 ) : BaseViewModel(dataManager) {
 
-    private val _customerLiveData: MediatorLiveData<Customer> = MediatorLiveData()
-    val customerLiveData: LiveData<Customer>
+    private val _customerLiveData: MediatorLiveData<Result<List<Customer>>> = MediatorLiveData()
+    val customerLiveData: LiveData<Result<List<Customer>>>
         get() = _customerLiveData
 
     private val _navigateUpEvent = MutableLiveData<Event<Unit>>()
     val navigateUpEvent: LiveData<Event<Unit>>
         get() = _navigateUpEvent
 
-    fun loadCustomerById(id: Long) {
+    fun loadCustomerById(id: String) {
         viewModelScope.launch {
             _customerLiveData.addSource(dataManager.getCustomerById(id)) { _customerLiveData.postValue(it) }
         }
@@ -31,10 +31,10 @@ class AddEditCustomerViewModel @Inject constructor(
 
     fun saveCustomer(customer: Customer?) {
         viewModelScope.launch {
-            if (customer?.address?.street == null) {
-                customer?.address = null
-            }
-            dataManager.saveCustomer(customer)
+//            if (customer?.street == null) {
+//                customer?.address = null
+//            }
+//            dataManager.saveCustomer(customer)
         }
         navigateUp()
     }

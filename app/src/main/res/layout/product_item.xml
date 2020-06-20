@@ -121,7 +121,7 @@
                 android:layout_marginTop="@dimen/space_normal"
                 android:layout_marginBottom="@dimen/space_micro"
                 android:layout_marginRight="@dimen/space_normal"
-                android:text="@{  @string/str_product_sale_price_display(product.saleCurrency.symbol ,product.salePrice) }"
+                android:text="@{  @string/str_product_sale_price_display(product.saleCurrencyCode ,product.salePrice) }"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_product_item_display"
                 app:layout_constraintBottom_toBottomOf="parent"

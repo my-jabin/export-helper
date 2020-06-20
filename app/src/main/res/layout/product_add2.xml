@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.jiujiu.helper.ui.products.add.AddProductFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <!--        <import type="com.jiujiu.helper.util.Conv" />-->
+
+        <variable
+            name="viewModel"
+            type="com.jiujiu.helper.ui.products.add.ProductAddViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/activity_bg">
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/add_product_title"-->
+        <!--            style="@style/TextAppearance.helper.title"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="@dimen/section_height_normal"-->
+        <!--            android:layout_marginStart="@dimen/margin_normal"-->
+        <!--            android:layout_marginTop="@dimen/margin_normal"-->
+        <!--            android:layout_marginEnd="@dimen/margin_normal"-->
+        <!--            android:text="@string/add_product_title"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bt_add_product_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_add_product_previous"
+            style="@style/TextAppearance.helper.button.text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:text="@string/text_previous"
+            app:icon="@drawable/ic_navigate_before_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_add_product_next"
+            style="@style/TextAppearance.helper.button.text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:text="@string/text_next"
+            app:icon="@drawable/ic_navigate_next_black_24dp"
+            app:iconGravity="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_add_product_save"
+            style="@style/TextAppearance.helper.button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:onClick="@{() -> viewModel.saveProduct() }"
+            android:text="@string/text_save"
+            android:visibility="invisible"
+            app:iconGravity="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

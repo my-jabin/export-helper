@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jiujiu.helper.ui.products.add.ProductAddViewModel" />
+
+        <variable
+            name="product"
+            type="com.jiujiu.helper.data.model.Product" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_product_pictures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.helper.MaterialCardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_add_product_picture_title"
+                        style="@style/TextAppearance.helper.body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/padding_normal"
+                        android:paddingEnd="@dimen/padding_normal"
+                        android:text="@string/add_product_picture_hint" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_add_product_picture"
+                        style="@style/TextAppearance.helper.button.outline"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/add_picture_height"
+                        android:layout_marginStart="@dimen/padding_normal"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginEnd="@dimen/padding_normal"
+                        android:text="@string/text_add_picture"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primaryTextColor"
+                        android:onClick="@{viewModel.onUploadPicturesClick}"
+                        app:icon="@drawable/ic_add_picture"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/primaryTextColor"
+                        app:strokeWidth="2dp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_product_brand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                app:cardCornerRadius="@dimen/corner_radius_small"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_color"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_product_pictures">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.jiujiu.helper.ui.widget.TextInputView
+                        android:id="@+id/til_product_brand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:paddingStart="@dimen/padding_normal"
+                        android:paddingEnd="@dimen/padding_normal"
+                        app:hint="@string/hint_add_product_brand"
+                        app:text="@={viewModel.product.brand}" />
+
+                    <com.jiujiu.helper.ui.widget.TextInputView
+                        android:id="@+id/til_product_brand_ch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingStart="@dimen/padding_normal"
+                        android:paddingEnd="@dimen/padding_normal"
+                        app:hint="@string/hint_add_product_brand_ch"
+                        app:text="@={viewModel.product.brandZh}" />
+
+                    <com.jiujiu.helper.ui.widget.TextInputView
+                        android:id="@+id/til_product_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingStart="@dimen/padding_normal"
+                        android:paddingEnd="@dimen/padding_normal"
+                        app:hint="@string/hint_add_product_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view_space_one"
+                        app:text="@={viewModel.product.name}" />
+
+                    <com.jiujiu.helper.ui.widget.TextInputView
+                        android:id="@+id/til_product_name_ch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingStart="@dimen/padding_normal"
+                        android:paddingEnd="@dimen/padding_normal"
+                        app:hint="@string/hint_add_product_name_ch"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/til_product_name"
+                        app:text="@={viewModel.product.nameZh}" />
+
+                    <com.jiujiu.helper.ui.widget.TextInputView
+                        android:id="@+id/til_product_model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingStart="@dimen/padding_normal"
+                        android:paddingEnd="@dimen/padding_normal"
+                        app:hint="@string/hint_add_product_model"
+                        app:text="@={viewModel.product.model}" />
+
+                    <com.jiujiu.helper.ui.widget.TextInputView
+                        android:id="@+id/til_product_model_ch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingStart="@dimen/padding_normal"
+                        android:paddingEnd="@dimen/padding_normal"
+                        app:hint="@string/hint_add_product_model_ch"
+                        app:text="@={viewModel.product.modelZh}" />
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
+

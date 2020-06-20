@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jiujiu.helper.ui.products.add.ProductAddViewModel" />
+
+        <variable
+            name="product"
+            type="com.jiujiu.helper.data.model.Product" />
+
+        <import type="com.jiujiu.helper.util.Conv" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_small">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vertical_50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_product_purchase"
+                style="@style/Widget.helper.cardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/add_product_card_height"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintEnd_toEndOf="@id/vertical_50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_product_purchase_price_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/icon"
+                        android:text="@string/icon_buy"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/text_size_main"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tv_product_purchase_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.15"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_product_purchase_title"
+                        style="@style/TextAppearance.helper.title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:gravity="center"
+                        android:text="@string/text_purchase_price"
+                        app:layout_constraintStart_toEndOf="@id/tv_product_purchase_price_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_purchase_currency"
+                        style="@style/TextAppearance.helper.hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/icon"
+                        android:text="@{Conv.currencyCodeToIconAsText(viewModel.product.purchaseCurrencyCode)}"
+                        android:onClick="@{viewModel::onPurchaseCurrencyClick}"
+                        app:layout_constraintBaseline_toBaselineOf="@id/ed_product_purchase_price"
+                        app:layout_constraintEnd_toEndOf="@id/tv_product_purchase_price_icon" />
+
+
+                    <EditText
+                        android:id="@+id/ed_product_purchase_price"
+                        style="@style/TextAppearance.moneyInput.value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:hint="0.0"
+                        android:textColorHint="@color/red_money"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_product_purchase_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_product_purchase_title"
+                        android:text="@={Conv.doubleToString(viewModel.product.purchasePrice)}"
+                        tools:text="0.5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_product_sale"
+                style="@style/Widget.helper.cardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/add_product_card_height"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/vertical_50"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_product_sale_price_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/icon"
+                        android:text="@string/icon_sale"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tv_product_sale_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.15"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_product_sale_title"
+                        style="@style/TextAppearance.helper.title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_extra_small"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@string/text_sale_price"
+                        app:layout_constraintStart_toEndOf="@id/tv_product_sale_price_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_sale_currency"
+                        style="@style/TextAppearance.helper.hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/icon"
+                        android:text="@{Conv.currencyCodeToIconAsText(viewModel.product.saleCurrencyCode)}"
+                        android:onClick="@{viewModel::onSaleCurrencyClick}"
+                        app:layout_constraintBaseline_toBaselineOf="@id/ed_product_sale_price"
+                        app:layout_constraintEnd_toEndOf="@id/tv_product_sale_price_icon" />
+
+                    <EditText
+                        android:id="@+id/ed_product_sale_price"
+                        style="@style/TextAppearance.moneyInput.value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_extra_small"
+                        android:layout_marginEnd="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:hint="0.0"
+                        android:textColorHint="@color/red_money"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_product_sale_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_product_sale_title"
+                        android:text="@={Conv.doubleToString(viewModel.product.salePrice)}"
+                        tools:text="22.5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_product_weight"
+                style="@style/Widget.helper.cardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/add_product_card_height"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintEnd_toEndOf="@id/vertical_50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_product_purchase">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_product_weight_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/icon"
+                        android:text="@string/icon_kg"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tv_product_weight_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.15"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_product_weight_title"
+                        style="@style/TextAppearance.helper.title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_extra_small"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@string/hint_add_product_netweight"
+                        app:layout_constraintStart_toEndOf="@id/tv_product_weight_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <EditText
+                        android:id="@+id/ed_product_weight"
+                        style="@style/TextAppearance.helper.body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:background="@null"
+                        android:hint="0.0"
+                        android:inputType="number|numberDecimal"
+                        android:textSize="@dimen/text_size_input_text_highlight"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tv_product_weight_title"
+                        app:layout_constraintStart_toStartOf="@id/tv_product_weight_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_product_weight_title"
+                        android:text="@={Conv.doubleToString(viewModel.product.netWeight)}"
+                        tools:text="0.52" />
+
+                    <TextView
+                        android:id="@+id/tv_purchase_weight"
+                        style="@style/TextAppearance.helper.hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="@string/str_kg"
+                        app:layout_constraintBaseline_toBaselineOf="@id/ed_product_weight"
+                        app:layout_constraintStart_toEndOf="@id/ed_product_weight" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_product_origin"
+                style="@style/Widget.helper.cardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/add_product_card_height"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/vertical_50"
+                app:layout_constraintTop_toBottomOf="@id/card_product_sale">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_product_origin_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/icon"
+                        android:text="@string/icon_location"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tv_product_origin_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.15"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_product_origin_title"
+                        style="@style/TextAppearance.helper.title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_extra_small"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@string/hint_add_product_made_in"
+                        app:layout_constraintStart_toEndOf="@id/tv_product_origin_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <EditText
+                        android:id="@+id/ed_product_origin"
+                        style="@style/TextAppearance.helper.body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:background="@null"
+                        android:hint="@string/hint_add_product_made_in"
+                        android:inputType="text"
+                        android:textSize="@dimen/text_size_input_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_product_origin_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_product_origin_title"
+                        android:text="@={viewModel.product.madeIn}"
+                        tools:text="Germany" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_product_type"
+                style="@style/Widget.helper.cardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/add_product_card_height"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintEnd_toEndOf="@id/vertical_50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_product_weight">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_product_type_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/icon"
+                        android:text="@string/icon_kg"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tv_product_type_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.15"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_product_type_title"
+                        style="@style/TextAppearance.helper.title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_extra_small"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@string/hint_add_product_type"
+                        app:layout_constraintStart_toEndOf="@id/tv_product_type_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/tv_product_type"
+                        style="@style/TextAppearance.helper.body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:textSize="@dimen/text_size_main"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tv_product_type_title"
+                        app:layout_constraintStart_toStartOf="@id/tv_product_type_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_product_type_title"
+                        android:text="@={viewModel.product.type}"
+                        tools:text="type" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_product_purchase_approach"
+                style="@style/Widget.helper.cardView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/add_product_card_height"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/vertical_50"
+                app:layout_constraintTop_toBottomOf="@id/card_product_weight">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_product_purchase_approach_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/icon"
+                        android:text="@string/icon_kg"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tv_product_purchase_approach_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.15"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_product_purchase_approach_title"
+                        style="@style/TextAppearance.helper.title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_extra_small"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@string/hint_add_product_purchase_approach"
+                        app:layout_constraintStart_toEndOf="@id/tv_product_purchase_approach_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <EditText
+                        android:id="@+id/ed_product_purchase_approach"
+                        style="@style/TextAppearance.helper.body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:background="@null"
+                        android:hint="@string/hint_add_product_purchase_approach"
+                        android:inputType="text"
+                        android:textSize="@dimen/text_size_input_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/tv_product_purchase_approach_title"
+                        app:layout_constraintStart_toStartOf="@id/tv_product_purchase_approach_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_product_purchase_approach_title"
+                        android:text="@={viewModel.product.purchaseApproach}"
+                        tools:text="type" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:id="@+id/tv_product_description_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:fontFamily="@font/icon"
+                android:text="@string/icon_form"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tv_product_description_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_product_type"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_product_description_title"
+                style="@style/TextAppearance.helper.title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_extra_small"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="@string/hint_add_product_description"
+                app:layout_constraintStart_toEndOf="@id/tv_product_description_icon"
+                app:layout_constraintTop_toBottomOf="@id/card_product_type" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextAppearance.helper.textInput.outline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintEnabled="false"
+                android:layout_margin="@dimen/margin_normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_description_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_text"
+                    style="@style/TextAppearance.textInputView.Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textMultiLine"
+                    android:lines="2"
+                    android:maxLines="10"
+                    android:text="@={viewModel.product.description}"
+                    tools:text="Name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!--            <com.google.android.material.card.MaterialCardView-->
+            <!--                android:id="@+id/card_product_pictures"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:cardElevation="0dp"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.helper.MaterialCardView">-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical">-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tv_add_product_title"-->
+            <!--                    style="@style/TextAppearance.helper.body"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:paddingStart="@dimen/padding_normal"-->
+            <!--                    android:paddingEnd="@dimen/padding_normal"-->
+            <!--                    android:text="@string/add_product_title" />-->
+
+
+            <!--            </LinearLayout>-->
+
+            <!--            </com.google.android.material.card.MaterialCardView>-->
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:id="@+id/til_product_purchase_price"-->
+            <!--                style="@style/TextAppearance.helper.textInput"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:hint="@string/text_purchase_price"-->
+            <!--                app:hintTextAppearance="@style/TextAppearance.helper.hint"-->
+            <!--                app:endIconDrawable="@drawable/ic_currency_exchange"-->
+            <!--                app:endIconMode="custom"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:placeholderText="0.0"-->
+            <!--                app:suffixText='@{viewModel.product.purchaseCurrency}'-->
+            <!--                app:suffixTextAppearance="@style/TextAppearance.helper.edit">-->
+
+            <!--                <com.google.android.material.textfield.TextInputEditText-->
+            <!--                    android:id="@+id/et_product_purchase_price"-->
+            <!--                    style="@style/TextAppearance.helper.edit.money"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:background="@android:color/transparent"-->
+            <!--                    android:inputType="number|numberDecimal"-->
+            <!--                    android:maxLines="1"-->
+            <!--                    android:text="@={Conv.doubleToString(viewModel.product.purchasePrice)}"-->
+            <!--                    android:textSize="@dimen/text_size_large" />-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:id="@+id/til_product_sale_price"-->
+            <!--                style="@style/TextAppearance.helper.textInput"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/margin_normal"-->
+            <!--                android:hint="@string/text_sale_price"-->
+            <!--                app:hintTextAppearance="@style/TextAppearance.helper.hint"-->
+            <!--                app:endIconDrawable="@drawable/ic_currency_exchange"-->
+            <!--                app:endIconMode="custom"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/til_product_purchase_price"-->
+            <!--                app:suffixText='@{viewModel.product.saleCurrency}'-->
+            <!--                app:suffixTextAppearance="@style/TextAppearance.helper.edit">-->
+
+            <!--                <com.google.android.material.textfield.TextInputEditText-->
+            <!--                    android:id="@+id/et_product_sale_price"-->
+            <!--                    style="@style/TextAppearance.helper.edit.money"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:background="@android:color/transparent"-->
+            <!--                    android:inputType="number|numberDecimal"-->
+            <!--                    android:maxLines="1"-->
+            <!--                    android:text="@={Conv.doubleToString(viewModel.product.salePrice)}"-->
+            <!--                    android:textSize="@dimen/text_size_large"-->
+            <!--                    tools:text="4.2"/>-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!--                        <com.jiujiu.helper.ui.widget.KeyValueTextView-->
+            <!--                            android:id="@+id/kvtv_add_product_type"-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginStart="@dimen/margin_small"-->
+            <!--                            android:layout_marginTop="@dimen/margin_normal"-->
+            <!--                            app:keyText="@string/text_type"-->
+            <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                            app:layout_constraintStart_toStartOf="parent"-->
+            <!--                            app:layout_constraintTop_toBottomOf="@+id/til_product_sale_price"-->
+            <!--                            app:orientation="VERTICAL"-->
+            <!--                            app:valueText="@{viewModel.product.type}"-->
+            <!--                            tools:valueText="dd" />-->
+
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:id="@+id/til_product_netweight"-->
+            <!--                style="@style/TextAppearance.helper.textInput"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/margin_normal"-->
+            <!--                android:hint="@string/hint_add_product_netweight"-->
+            <!--                app:hintTextAppearance="@style/TextAppearance.helper.hint"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/kvtv_add_product_type"-->
+            <!--                app:placeholderText="0.0"-->
+            <!--                app:placeholderTextAppearance="@style/TextAppearance.helper.body1"-->
+            <!--                app:suffixText="@string/str_kg">-->
+
+            <!--                <com.google.android.material.textfield.TextInputEditText-->
+            <!--                    android:id="@+id/et_product_net_weight"-->
+            <!--                    style="@style/TextAppearance.helper.edit"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:background="@android:color/transparent"-->
+            <!--                    android:inputType="number|numberDecimal"-->
+            <!--                    android:maxLines="1"-->
+            <!--                    android:text="@={Conv.doubleToString(viewModel.product.netWeight)}"-->
+            <!--                    android:textSize="@dimen/text_size_large" />-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:id="@+id/til_product_made_in"-->
+            <!--                style="@style/TextAppearance.helper.textInput"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/margin_normal"-->
+            <!--                android:hint="@string/hint_add_product_made_in"-->
+            <!--                app:hintTextAppearance="@style/TextAppearance.helper.hint"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/til_product_netweight">-->
+
+            <!--                <com.google.android.material.textfield.TextInputEditText-->
+            <!--                    android:id="@+id/et_product_made_in"-->
+            <!--                    style="@style/TextAppearance.helper.edit"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:background="@android:color/transparent"-->
+            <!--                    android:inputType="text"-->
+            <!--                    android:maxLines="1"-->
+            <!--                    android:text="@={viewModel.product.madeIn}"-->
+            <!--                    android:textSize="@dimen/text_size_normal" />-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:id="@+id/til_product_purchase_approach"-->
+            <!--                style="@style/TextAppearance.helper.textInput"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/margin_normal"-->
+            <!--                android:hint="@string/hint_add_product_purchase_approach"-->
+            <!--                app:hintTextAppearance="@style/TextAppearance.helper.hint"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/til_product_made_in">-->
+
+            <!--                <com.google.android.material.textfield.TextInputEditText-->
+            <!--                    android:id="@+id/et_product_purchase_approach"-->
+            <!--                    style="@style/TextAppearance.helper.edit"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:background="@android:color/transparent"-->
+            <!--                    android:inputType="text"-->
+            <!--                    android:maxLines="1"-->
+            <!--                    android:text="@={viewModel.product.purchaseApproach}"-->
+            <!--                    android:textSize="@dimen/text_size_normal" />-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:id="@+id/til_product_description"-->
+            <!--                style="@style/TextAppearance.helper.textInput"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/margin_normal"-->
+            <!--                android:hint="@string/hint_add_product_description"-->
+            <!--                app:hintTextAppearance="@style/TextAppearance.helper.hint"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/til_product_purchase_approach">-->
+
+            <!--                <com.google.android.material.textfield.TextInputEditText-->
+            <!--                    android:id="@+id/et_product_description"-->
+            <!--                    style="@style/TextAppearance.helper.edit"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:background="@android:color/transparent"-->
+            <!--                    android:inputType="text"-->
+            <!--                    android:maxLines="5"-->
+            <!--                    android:text="@={viewModel.product.purchaseApproach}"-->
+            <!--                    android:textSize="@dimen/text_size_normal" />-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
+

@@ -48,7 +48,8 @@
         android:label="{title}">
         <argument
             android:name="productId"
-            app:argType="long" />
+            app:argType="string"
+            app:nullable="true" />
         <argument
             android:name="title"
             android:defaultValue="add product"
@@ -65,7 +66,7 @@
         android:label="AddEditCustomerFragment">
         <argument
             android:name="customerId"
-            app:argType="long" />
+            app:argType="string" />
     </fragment>
 
 </navigation>

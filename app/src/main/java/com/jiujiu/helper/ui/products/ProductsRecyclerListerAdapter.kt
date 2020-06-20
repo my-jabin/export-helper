@@ -2,19 +2,16 @@ package com.jiujiu.helper.ui.products
 
 import android.view.View
 import androidx.annotation.NonNull
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import com.jiujiu.helper.R
 import com.jiujiu.helper.data.model.Product
 import com.jiujiu.helper.databinding.ProductItemBinding
 import com.jiujiu.helper.ui.base.BaseRecyclerListAdapter
-import com.jiujiu.helper.ui.main.MainFragmentDirections
 
 class ProductsRecyclerListerAdapter : BaseRecyclerListAdapter<Product, ProductItemBinding>(diffProduct) {
 
     override val itemLayoutId: Int
         get() = R.layout.product_item
-
 
     override fun bindViewHolder(binding: ProductItemBinding, position: Int) {
         val p = getItem(position) ?: return
@@ -25,9 +22,9 @@ class ProductsRecyclerListerAdapter : BaseRecyclerListAdapter<Product, ProductIt
     }
 
     private fun onProductItemClick(v: View, @NonNull p: Product) {
-        val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(p.id!!)
-        action.title = p.name ?: ""
-        v.findNavController().navigate(action)
+//        val action = MainFragmentDirections.actionMainFragmentToProductDetailFragment(p.id!!)
+//        action.title = p.name ?: ""
+//        v.findNavController().navigate(action)
     }
 }
 

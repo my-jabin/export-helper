@@ -3,50 +3,45 @@ package com.jiujiu.helper.worker
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.google.gson.stream.JsonReader
-import com.jiujiu.helper.R
-import com.jiujiu.helper.data.local.dao.CustomerDao
-import com.jiujiu.helper.data.local.dao.ProductTypeDao
-import com.jiujiu.helper.data.model.Customer
-import com.jiujiu.helper.data.model.Product
-import com.jiujiu.helper.data.model.ProductType
-import com.jiujiu.helper.data.repository.ProductRepository
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 
 class PrePopulateDataWorker @AssistedInject constructor(
         @Assisted private val context: Context,
-        @Assisted workerParams: WorkerParameters,
-        private val mProductRepository: ProductRepository,
-        private val mProductTypeDao: ProductTypeDao,
-        private val mCustomerDao: CustomerDao
-) : CoroutineWorker(context, workerParams) {
+        @Assisted workerParams: WorkerParameters
+//        private val mProductRepository: ProductRepository
+//        private val mProductTypeDao: ProductTypeDao,
+//        private val mCustomerDao: CustomerDao
+) : CoroutineWorker(context, workerParams), AnkoLogger {
 
     override val coroutineContext = Dispatchers.IO
 
     override suspend fun doWork(): Result {
         return coroutineScope {
-            prePopulateProductTypes()
-            prePopulateProducts()
-            prePopulateCustomer()
+            //            prePopulateProductTypes()
+//            prePopulateProducts()
+//            prePopulateCustomer()
+            info {
+                "prepopulateDataWorking....."
+            }
             Result.success()
         }
     }
 
-    private fun prePopulateCustomer() {
-        if (mCustomerDao.count() < 1) {
-            val reader = context.resources.assets.open("customers.json")
-            val jsonReader = JsonReader(reader.reader())
-            val gson = Gson()
-            val collectionType = object : TypeToken<Collection<Customer>>() {}.type
-            val customers = gson.fromJson<List<Customer>>(jsonReader, collectionType)
-            mCustomerDao.insertOrUpdate(*customers.toTypedArray())
-        }
-
+//    private fun prePopulateCustomer() {
+//        if (mCustomerDao.count() < 1) {
+//            val reader = context.resources.assets.open("customers.json")
+//            val jsonReader = JsonReader(reader.reader())
+//            val gson = Gson()
+//            val collectionType = object : TypeToken<Collection<Customer>>() {}.type
+//            val customers = gson.fromJson<List<Customer>>(jsonReader, collectionType)
+//            mCustomerDao.insertOrUpdate(*customers.toTypedArray())
+//        }
+//
 //        val customers = arrayListOf<Customer>().apply {
 //            add(Customer(
 //                    name = "Yanbin Hu",
@@ -68,31 +63,31 @@ class PrePopulateDataWorker @AssistedInject constructor(
 //            add(Customer("郭燕雪", address = Address(province = "福建省", city = "厦门市湖里区", street = "圆山南路202号")))
 //        }
 //        mCustomerDao.insertOrUpdate(*customers.toTypedArray())
-    }
+//}
 
-    private fun prePopulateProductTypes() {
-        if (this.mProductTypeDao.count() <= 0) {
-            val types = arrayListOf<ProductType>().apply {
-                add(ProductType(context.getString(R.string.text_milk_powder)))
-                add(ProductType(context.getString(R.string.text_clothes)))
-                add(ProductType(context.getString(R.string.text_cosmetic)))
-                add(ProductType(context.getString(R.string.text_luxury)))
-                add(ProductType(context.getString(R.string.text_alcohol)))
-            }
-            mProductTypeDao.insert(*types.toTypedArray())
-        }
-    }
-
-    private fun prePopulateProducts() {
-        if (this.mProductRepository.getCount() <= 0) {
-            val reader = context.resources.assets.open("data.json")
-            val jsonReader = JsonReader(reader.reader())
-            val gson = Gson()
-            val collectionType = object : TypeToken<Collection<Product>>() {}.type
-            val products = gson.fromJson<List<Product>>(jsonReader, collectionType)
-            mProductRepository.insertOrUpdate(*products.toTypedArray())
-        }
-    }
+//    private fun prePopulateProductTypes() {
+//        if (this.mProductTypeDao.count() <= 0) {
+//            val types = arrayListOf<ProductType>().apply {
+//                add(ProductType(context.getString(R.string.text_milk_powder)))
+//                add(ProductType(context.getString(R.string.text_clothes)))
+//                add(ProductType(context.getString(R.string.text_cosmetic)))
+//                add(ProductType(context.getString(R.string.text_luxury)))
+//                add(ProductType(context.getString(R.string.text_alcohol)))
+//            }
+//            mProductTypeDao.insert(*types.toTypedArray())
+//        }
+//    }
+//
+//    private fun prePopulateProducts() {
+//        if (this.mProductRepository.getCount() <= 0) {
+//            val reader = context.resources.assets.open("data.json")
+//            val jsonReader = JsonReader(reader.reader())
+//            val gson = Gson()
+//            val collectionType = object : TypeToken<Collection<Product>>() {}.type
+//            val products = gson.fromJson<List<Product>>(jsonReader, collectionType)
+//            mProductRepository.insertOrUpdate(*products.toTypedArray())
+//        }
+//    }
 
     @AssistedInject.Factory
     interface Factory : CustomWorkerFactory

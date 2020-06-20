@@ -5,9 +5,19 @@
     <color name="colorAccent">#FF4081</color>
     <color name="secondaryTextColor">#001111</color>
     <color name="primaryTextColor">#000000</color>
-    <color name="hintTextColor">#121212</color>
+    <color name="hintTextColor">@color/blue_black_light</color>
 
     <!--Design colors-->
+    <color name="danger">#ff4444</color>
+    <color name="danger_dark">#ff4444</color>
+    <color name="warning">#ffbb33</color>
+    <color name="warning_dark">#ffbb33</color>
+    <color name="success">#00C851</color>
+    <color name="success_dark">#007E33</color>
+    <color name="info">#33b5e5</color>
+    <color name="info_dark">#0099CC</color>
+
+    <color name="border_color">#ffa8adb3</color>
     <color name="red_dark">#F06423</color>
     <color name="red_dark2">#D85A1B</color>
     <color name="red_money">#EF5B0D</color>
@@ -32,5 +42,7 @@
     <color name="background_start">#a8e6cf</color>
     <color name="background_end">#dcedc1</color>
     <color name="disable">#B0000000</color>
+
+    <color name="box_Stroke_Color">@color/colorAccent</color>
 
 </resources>

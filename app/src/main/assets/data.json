@@ -1,53 +1,55 @@
-[
-  {
-    "name": "Profutura",
-    "brand": "Aptamil",
-    "brandZh": "爱他美",
-    "nameZh": "蓝版",
-    "model": "Anfangsmilck 1 von Geburt an",
-    "modelZh": "1 段",
-    "typeId": 1,
-    "description": "Kindermilch",
-    "netWeight": 0.8,
-    "salePrice": 230.0,
-    "saleCurrency": "CNY",
-    "purchasePrice": 15.95,
-    "purchaseCurrency": "EUR",
-    "origin": "Germany",
-    "purchaseApproach": "dm"
-  },
-  {
-    "name": "Profutura",
-    "brand": "Aptamil",
-    "brandZh": "爱他美",
-    "nameZh": "蓝版",
-    "model": "Anfangsmilck 2 von Geburt an",
-    "modelZh": "2 段",
-    "typeId": 2,
-    "description": "Kindermilch",
-    "netWeight": 0.8,
-    "salePrice": 230.0,
-    "saleCurrency": "CNY",
-    "purchasePrice": 15.95,
-    "purchaseCurrency": "EUR",
-    "origin": "Germany",
-    "purchaseApproach": "dm"
-  },
-  {
-    "name": "Profutura",
-    "brand": "Aptamil",
-    "brandZh": "爱他美",
-    "nameZh": "蓝版",
-    "model": "Anfangsmilck 3 von Geburt an",
-    "modelZh": "3 段",
-    "typeId": 3,
-    "description": "Kindermilch",
-    "netWeight": 0.8,
-    "salePrice": 230.0,
-    "saleCurrency": "CNY",
-    "purchasePrice": 15.95,
-    "purchaseCurrency": "EUR",
-    "origin": "Germany",
-    "purchaseApproach": "dm"
-  }
-]
+{
+  "products": [
+    {
+      "name": "Profutura",
+      "brand": "Aptamil",
+      "brandZh": "爱他美",
+      "nameZh": "蓝版",
+      "model": "Anfangsmilck 1 von Geburt an",
+      "modelZh": "1 段",
+      "typeId": 1,
+      "description": "Kindermilch",
+      "netWeight": 0.8,
+      "salePrice": 230.0,
+      "saleCurrency": "CNY",
+      "purchasePrice": 15.95,
+      "purchaseCurrency": "EUR",
+      "origin": "Germany",
+      "purchaseApproach": "dm"
+    },
+    {
+      "name": "Profutura",
+      "brand": "Aptamil",
+      "brandZh": "爱他美",
+      "nameZh": "蓝版",
+      "model": "Anfangsmilck 2 von Geburt an",
+      "modelZh": "2 段",
+      "typeId": 2,
+      "description": "Kindermilch",
+      "netWeight": 0.8,
+      "salePrice": 230.0,
+      "saleCurrency": "CNY",
+      "purchasePrice": 15.95,
+      "purchaseCurrency": "EUR",
+      "origin": "Germany",
+      "purchaseApproach": "dm"
+    },
+    {
+      "name": "Profutura",
+      "brand": "Aptamil",
+      "brandZh": "爱他美",
+      "nameZh": "蓝版",
+      "model": "Anfangsmilck 3 von Geburt an",
+      "modelZh": "3 段",
+      "typeId": 3,
+      "description": "Kindermilch",
+      "netWeight": 0.8,
+      "salePrice": 230.0,
+      "saleCurrency": "CNY",
+      "purchasePrice": 15.95,
+      "purchaseCurrency": "EUR",
+      "origin": "Germany",
+      "purchaseApproach": "dm"
+    }
+  ]
+}

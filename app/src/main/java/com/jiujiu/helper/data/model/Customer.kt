@@ -1,36 +1,25 @@
 package com.jiujiu.helper.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import java.util.*
-
-@Entity
+import com.google.firebase.auth.FirebaseAuth
 data class Customer(
 
+        var id: String? = null,
         var name: String? = null,
-
-        @ColumnInfo(name = "id_number")
         var IDNumber: String? = null,
-
-        @Embedded
-        var address: Address? = null,
-
-        @ColumnInfo(name = "phone_number")
+        var street: String? = null,
+        var district: String? = null,
+        var city: String? = null,
+        var province: String? = null,
+        var country: String? = "中国",
         var phoneNumber: String? = null,
-
-        var email: String? = null
-
+        var email: String? = null,
+        var userUID: String? = FirebaseAuth.getInstance().uid
 ) {
-    @ColumnInfo(name = "created_at")
-    var createdAt: Calendar? = Calendar.getInstance(Locale.getDefault())
+    val address: String
+        get() = "$country$province$city$district$street"
 
-    @ColumnInfo(name = "updated_at")
-    var updateAt: Calendar? = Calendar.getInstance(Locale.getDefault())
-
-    @PrimaryKey(autoGenerate = true)
-    var id: Long? = null
+    fun validAddress(): Boolean = province != null && city != null && district != null && street != null
 }
+
 
 

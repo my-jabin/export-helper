@@ -32,6 +32,6 @@ abstract class BaseRecyclerListAdapter<T, B : ViewDataBinding> protected constru
 
     abstract fun bindViewHolder(binding: B, position: Int)
 
-    class BaseViewHolder<B : ViewDataBinding> internal constructor(internal var binding: B) : RecyclerView.ViewHolder(binding.root)
+    open class BaseViewHolder<B : ViewDataBinding> internal constructor(internal var binding: B) : RecyclerView.ViewHolder(binding.root)
 
 }

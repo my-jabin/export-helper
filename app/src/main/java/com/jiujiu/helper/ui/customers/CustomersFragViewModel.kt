@@ -1,11 +1,10 @@
 package com.jiujiu.helper.ui.customers
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
 import com.jiujiu.helper.data.DataManager
 import com.jiujiu.helper.data.model.Customer
 import com.jiujiu.helper.ui.base.BaseViewModel
-import kotlinx.coroutines.launch
+import org.jetbrains.anko.info
 import javax.inject.Inject
 
 class CustomersFragViewModel @Inject constructor(
@@ -13,12 +12,13 @@ class CustomersFragViewModel @Inject constructor(
 ) : BaseViewModel(dataManager) {
 
     fun deleteCustomer(customer: Customer) {
-        viewModelScope.launch {
-            dataManager.deleteCustomer(customer)
-        }
+//        viewModelScope.launch {
+//            dataManager.deleteCustomer(customer)
+//        }
     }
 
-    val customerLiveData: LiveData<List<Customer>> by lazy {
+    val customerLiveData: LiveData<Result<List<Customer>>> by lazy {
+        info { "lazy init" }
         dataManager.allCustomers
     }
 
